@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/sistemaGestionTurno/src/sistemagestionturno/SistemaGestionTurno.java</file>
-            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/sistemaGestionTurno/src/Controlador/Controlador.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Modelo/Administrador.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Modelo/Turno.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Modelo/Alumno.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Modelo/Turnos.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Vista/GestionDeTurno.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Vista/RegistroDatosAlumno.java</file>
+            <file>file:/D:/pc%20familia%20games/UTN/3°%20AÑO/Seminario/SistemaGestionTurnos/sistemaGestionTurno/src/Vista/InterfazAdmin1.java</file>
         </group>
     </open-files>
 </project-private>

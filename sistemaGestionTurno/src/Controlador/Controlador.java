@@ -6,6 +6,7 @@ package Controlador;
 //sadasd
 import Vista.InterfazInicial;
 import Vista.GestionDeTurno;
+import Vista.Interfaz1;
 import Vista.InterfazAdmin1;
 import Vista.InterfazAdmin2;
 import Vista.InterfazAdminConfig;
@@ -59,6 +60,12 @@ public class Controlador {
         i.dispose();
         InterfazAdminVerTurnos vista = new InterfazAdminVerTurnos();
         vista.setVisible(true);
+    }
+    public static void IniciarSesion(Interfaz1 i){
+        
+        
+        
+        i.getLegajoAlum();
     }
             
 }

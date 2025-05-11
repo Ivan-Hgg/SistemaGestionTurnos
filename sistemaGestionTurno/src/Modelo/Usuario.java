@@ -8,8 +8,10 @@ package Modelo;
  *
  * @author Ivan y otros
  */
-public class Usuario {
+public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU DIFERENCIA ESTÁ
+    //EN LA VARIBLE BOLEANA DE TIPO
     private String correo;
+    private int legago;
     private String contraseña;
     private String apeNom;
     private int dni;
@@ -19,13 +21,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String correo, String contraseña, String apeNom, int dni, boolean tipo) {
+    public Usuario(String correo, String contraseña, String apeNom, int dni, boolean tipo, int legajo) {
         this.correo = correo;
         this.contraseña = contraseña;
         this.apeNom = apeNom;
         this.dni = dni;
         this.tipoUsu = tipo;
-        
+        this.legago = legajo;
     }
 
     public int getDni() {
@@ -68,11 +70,18 @@ public class Usuario {
         this.tipoUsu = tipoUsu;
     }
 
+    public int getLegago() {
+        return legago;
+    }
+
+    public void setLegago(int legago) {
+        this.legago = legago;
+    }
+
     @Override
     public String toString() {
-        return "correo=" + correo + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", dni=" + dni + "tipo: " + tipoUsu;
+        return "Usuario{" + "correo=" + correo + ", legago=" + legago + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", dni=" + dni + ", tipoUsu=" + tipoUsu + '}';
     }
-    
-    
+   
     
 }
