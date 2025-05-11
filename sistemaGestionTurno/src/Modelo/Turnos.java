@@ -16,6 +16,7 @@ public class Turnos {//clase especial para el arraylist de Turnos
     public Turnos() {
     }
     
+    
     public static void agregarTurnos(Turno t){
         turnos.add(t);
     }

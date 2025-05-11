@@ -8,6 +8,14 @@ package Modelo;
  *
  * @author Ivan y otros
  */
-public class Administrador {
+public class Administrador extends Usuario {
+    
+    //agregar las funcionalidades
+    
+    public static void verTurnos(Turnos t){} 
+    public static void configIntervalo(){} 
+    
+    
+    
     
 }
