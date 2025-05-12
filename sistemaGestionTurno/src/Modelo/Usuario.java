@@ -11,7 +11,7 @@ package Modelo;
 public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU DIFERENCIA ESTÁ
     //EN LA VARIBLE BOLEANA DE TIPO
     private String correo;
-    private int legago;
+    private int legajo;
     private String contraseña;
     private String apeNom;
     private int dni;
@@ -27,7 +27,7 @@ public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU
         this.apeNom = apeNom;
         this.dni = dni;
         this.tipoUsu = tipo;
-        this.legago = legajo;
+        this.legajo = legajo;
     }
 
     public int getDni() {
@@ -70,17 +70,17 @@ public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU
         this.tipoUsu = tipoUsu;
     }
 
-    public int getLegago() {
-        return legago;
+    public int getLegajo() {
+        return legajo;
     }
 
-    public void setLegago(int legago) {
-        this.legago = legago;
+    public void setLegajo(int legajo) {
+        this.legajo = legajo;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "correo=" + correo + ", legago=" + legago + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", dni=" + dni + ", tipoUsu=" + tipoUsu + '}';
+        return "Usuario{" + "correo=" + correo + ", legago=" + legajo + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", dni=" + dni + ", tipoUsu=" + tipoUsu + '}';
     }
    
     
