@@ -138,7 +138,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void RegistroDatosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroDatosBotonActionPerformed
         // TODO add your handling code here:
-        Controlador.IniciarSesion(this);
+        Controlador.CrearUsuario(this);
     }//GEN-LAST:event_RegistroDatosBotonActionPerformed
 
     private void iniciarSesionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBotonActionPerformed
