@@ -18,7 +18,6 @@ public class SistemaGestionTurno {
     public static void main(String[] args) {
         // TODO code application logic here
         Controlador.inicio();
-        //eso
 
     }
     

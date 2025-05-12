@@ -21,12 +21,45 @@ import javax.swing.JOptionPane;
  */
 public class Controlador {
     private static Usuarios usuarios = new Usuarios();
-    private static Usuario us= new Usuario();
+    
     
     
     public static void inicio(){
         Interfaz1 i= new Interfaz1 ();
         i.setVisible(true);
+        Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
+        usuarios.agregarUsuario(u);
+        Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
+        usuarios.agregarUsuario(us);
+        Usuario usu = new Usuario("c@alu.frt.utn.edu.ar", "3", "3", 3, false, 3);//admin
+        usuarios.agregarUsuario(usu);
+        usuarios.mostrar();
+    }
+    
+    public static void IniciarSesion(Interfaz1 i){
+        
+        try {
+            int legajo= Integer.parseInt(i.getLegajoAlum().getText());
+            String contraseña =i.getContraseñaUsuario().getText();
+
+                
+            if(usuarios.buscarUsuario(contraseña,legajo) == true ){
+                JOptionPane.showMessageDialog(i, "Usuario encontrado", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
+                i.dispose();
+                GestionDeTurno g = new GestionDeTurno(); g.setVisible(true);//siguiente interfaz
+            }else{
+                JOptionPane.showMessageDialog(i, "Usuario No Encontrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+                i.getContraseñaUsuario().setText("");
+                i.getLegajoAlum().setText("");
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(i, "Error en el Ingreso de Datos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+            i.getContraseñaUsuario().setText("");
+            i.getLegajoAlum().setText("");
+        }
+        
+        
     }
     
     public static void RegistroDatos(RegistroDatosAlumno i){//usado en RegistroDatosAlumno
@@ -59,14 +92,14 @@ public class Controlador {
                 bandera=true;
                 JOptionPane.showMessageDialog(i, "Correo no valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
-            //comprueba que no se repita el correo REVISAR
+            //comprueba que no se repita el correo 
             if(usuarios.buscarCorreo(correo) == true){
                 JOptionPane.showMessageDialog(i, "Correo ya registrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 bandera=true;
             }
             
             
-            //SECCION LEGAJO, QUE NO SE REPITAN REVISAR
+            //SECCION LEGAJO, QUE NO SE REPITAN 
             if(usuarios.buscarLegajo(legajo) == true){
                 JOptionPane.showMessageDialog(i, "Legajo ya registrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 bandera=true;
@@ -77,16 +110,13 @@ public class Controlador {
             //SECCION MENSAJE DE ERROR
             if(bandera==false){
                 //registra los datos en una instancia y lo almacena en arraylist
-                us.setApeNom(apeNom);
-                us.setContraseña(contraseña);
-                us.setCorreo(correo);
-                us.setDni(dni);
-                us.setLegajo(legajo);
-                us.setTipoUsu(true);//usuario alumno
+                Usuario us= new Usuario(correo, contraseña, apeNom, dni, true, legajo);
                 usuarios.agregarUsuario(us);
+                
                 JOptionPane.showMessageDialog(i, "Datos Correctos", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
                 i.dispose();//para cerrar y volver a la pantalla inicial en caso de todo correcto
                 inicio();
+                usuarios.mostrar();
             }else{
                 i.getApeNomAlum().setText("");
                 i.getContraseña().setText("");
@@ -107,11 +137,6 @@ public class Controlador {
         
     }
     
-    public static void inicioGestionDeTurno(RegistroDatosAlumno i){
-        i.dispose();
-        GestionDeTurno t = new GestionDeTurno();
-        t.setVisible(true);
-    }
     
     /*public static void interfazAdmin1(InterfazInicial i){
         i.dispose();
@@ -136,13 +161,7 @@ public class Controlador {
         InterfazAdminVerTurnos vista = new InterfazAdminVerTurnos();
         vista.setVisible(true);
     }
-    public static void IniciarSesion(Interfaz1 i){
-        int legajo= Integer.parseInt(i.getLegajoAlum().getText());
-        String contraseña =i.getContraseñaUsuario().getText();
-        
-        usuarios.buscarLegajo(legajo);
-        
-    }
+    
     
     public static void CrearUsuario(Interfaz1 i){
         i.dispose();

@@ -61,8 +61,9 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
 
+        RegistroDatosBoton.setBackground(java.awt.SystemColor.control);
         RegistroDatosBoton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        RegistroDatosBoton.setText("Si no tienes cuenta, Registrate dando click aquí");
+        RegistroDatosBoton.setText("Si no tenes cuenta, Registrate dando click aquí");
         RegistroDatosBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistroDatosBotonActionPerformed(evt);
@@ -108,9 +109,9 @@ public class Interfaz1 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(legajoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))

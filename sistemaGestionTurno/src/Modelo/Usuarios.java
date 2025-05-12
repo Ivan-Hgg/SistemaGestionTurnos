@@ -17,8 +17,8 @@ public class Usuarios {
     }
     
     
-    public static void agregarUsuario(Usuario u){
-        usuarios.add(u);
+    public static void agregarUsuario(Usuario usu){
+        usuarios.add(usu);
     }
     
     public void mostrar (){
@@ -38,10 +38,12 @@ public class Usuarios {
     return false;
     }
     
-    public boolean buscarContraseña(String contra){
+    
+    
+    public boolean buscarUsuario(String contra, int leg){
         boolean r=false; //false no encontro, true encontro
         for (Usuario usu : usuarios) {
-            if(usu.getContraseña()==contra){
+            if(leg==usu.getLegajo() &&contra.equals(usu.getContraseña())){
                 r = true;
             }
         }
@@ -51,10 +53,19 @@ public class Usuarios {
     public boolean buscarCorreo(String correo){
         boolean r=false; //false no encontro, true encontro
         for (Usuario usu : usuarios) {
-            if(usu.getCorreo()==correo){
+            if(correo.equals(usu.getCorreo())){
                 r = true;
             }
+            
         }
-        return r;
+    return r;
     }
+
+    @Override
+    public String toString() {
+        return "Usuarios{" + usuarios +'}';
+    }
+    
+    
+    
 }

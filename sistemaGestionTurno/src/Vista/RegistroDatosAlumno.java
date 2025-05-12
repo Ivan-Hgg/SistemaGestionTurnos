@@ -42,6 +42,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
         correoAlum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro Datos Alumno");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Registro de datos");
