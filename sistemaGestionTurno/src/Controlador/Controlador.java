@@ -173,5 +173,13 @@ public class Controlador {
         RegistroDatosAlumno v = new RegistroDatosAlumno();
         v.setVisible(true);
     }
-            
+   public static void regresarInterfazAdminConfig(){
+         Controlador.dispose();
+        InterfazAdmin2 vist = new InterfazAdmin2();
+        vist.setVisible(true);
+   }         
+
+    public static void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
