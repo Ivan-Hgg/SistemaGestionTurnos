@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
 /**
@@ -61,10 +58,5 @@ public class Turno {//clase de turno. Describir sus atributos y funciones.
     public String toString() {
         return "Turno{" + "fechaTurno=" + fechaTurno + ", tipoNota=" + tipoNota + ", codigoSeg=" + codigoSeg + ", alum=" + alum + '}';
     }
-    
-    
-    
-    
-    
-    
+      
 }
