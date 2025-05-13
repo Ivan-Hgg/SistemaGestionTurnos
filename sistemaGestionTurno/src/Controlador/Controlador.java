@@ -8,7 +8,6 @@ import Modelo.Usuario;
 import Modelo.Usuarios;
 import Vista.GestionDeTurno;
 import Vista.Interfaz1;
-import Vista.InterfazAdmin1;
 import Vista.InterfazAdmin2;
 import Vista.InterfazAdminConfig;
 import Vista.InterfazAdminVerTurnos;
@@ -50,7 +49,7 @@ public class Controlador {
                 if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
                     //abre la interfaz del turno del usuario, no se cual es
                 }else{//abre la interfaz siguiente del admin
-                    GestionDeTurno g = new GestionDeTurno(); g.setVisible(true);//creo q esta era la interfaz del admin
+                    InterfazAdmin2 vist = new InterfazAdmin2();vist.setVisible(true);//creo q esta era la interfaz del admin
                 }
                 
             }else{
@@ -150,11 +149,11 @@ public class Controlador {
         vista.setVisible(true);
     }*/
     
-    public static void interfazAdmin2(InterfazAdmin1 i){
+    /*public static void interfazAdmin2(InterfazAdmin1 i){
         i.dispose();
         InterfazAdmin2 vist = new InterfazAdmin2();
         vist.setVisible(true);
-    }
+    }*/
     
     public static void interfazAdminConfig(InterfazAdmin2 i){
         i.dispose();
