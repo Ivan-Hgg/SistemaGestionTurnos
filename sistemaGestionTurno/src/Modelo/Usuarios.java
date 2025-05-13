@@ -50,6 +50,18 @@ public class Usuarios {
         return r;
     }
     
+    //buscar tipo usuario
+    public boolean buscarTipoUsuario(int leg){
+        boolean r=false; //false no encontro, true encontro
+        for (Usuario usu : usuarios) {
+            if(leg==usu.getLegajo()){
+                r = usu.isTipoUsu();
+            }
+        }
+        return r;
+    }
+    
+    //buscar correo
     public boolean buscarCorreo(String correo){
         boolean r=false; //false no encontro, true encontro
         for (Usuario usu : usuarios) {

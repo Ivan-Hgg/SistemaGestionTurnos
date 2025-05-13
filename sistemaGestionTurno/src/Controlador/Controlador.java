@@ -27,6 +27,7 @@ public class Controlador {
     public static void inicio(){
         Interfaz1 i= new Interfaz1 ();
         i.setVisible(true);
+        //Usuarios de prueba
         Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
         usuarios.agregarUsuario(u);
         Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
@@ -46,7 +47,12 @@ public class Controlador {
             if(usuarios.buscarUsuario(contraseña,legajo) == true ){
                 JOptionPane.showMessageDialog(i, "Usuario encontrado", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
                 i.dispose();
-                GestionDeTurno g = new GestionDeTurno(); g.setVisible(true);//siguiente interfaz
+                if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
+                    //abre la interfaz del turno del usuario, no se cual es
+                }else{//abre la interfaz siguiente del admin
+                    GestionDeTurno g = new GestionDeTurno(); g.setVisible(true);//creo q esta era la interfaz del admin
+                }
+                
             }else{
                 JOptionPane.showMessageDialog(i, "Usuario No Encontrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
                 i.getContraseñaUsuario().setText("");
