@@ -147,6 +147,7 @@ public class Interfaz1 extends javax.swing.JFrame {
         //desde la misma interfaz.
         Controlador.IniciarSesion(this);
         
+        
     }//GEN-LAST:event_iniciarSesionBotonActionPerformed
 
     /**
