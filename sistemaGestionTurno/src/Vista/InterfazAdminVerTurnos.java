@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+
 //sadasd
 /**
  *
@@ -52,13 +53,20 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"A104", "Cambio de Comision ", "57810", "Libran Victor ", "17:00"},
-                {"A105", "Cambio de Comision", "57809", "Lix Klett Carlos ", "17:10"},
-                {"A106", "Cambio de Comision", "58000", "Limo Josue ", "17:20"},
-                {"A107", "Cambio de Comision", "58105", "Herrera Ivan ", "17:30"}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo de Gestion", "Legajo", "Nombre ", "Horario"
+                "Codigo", "Tipo de Gestion", "Legajo", "Nombre "
             }
         ));
         jScrollPane1.setViewportView(jTable1);

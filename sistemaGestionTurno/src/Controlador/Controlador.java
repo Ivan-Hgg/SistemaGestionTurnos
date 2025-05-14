@@ -4,6 +4,7 @@
  */
 package Controlador;
 //sadasd
+import Modelo.Turno;
 import Modelo.Usuario;
 import Modelo.Usuarios;
 import Vista.GestionDeTurno;
@@ -12,9 +13,16 @@ import Vista.InterfazAdmin2;
 import Vista.InterfazAdminConfig;
 import Vista.InterfazAdminVerTurnos;
 import Vista.RegistroDatosAlumno;
+import java.awt.BorderLayout;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -245,9 +253,32 @@ public class Controlador {
          i.dispose();
         InterfazAdmin2 vist = new InterfazAdmin2();
         vist.setVisible(true);
-   }     
+   } 
+  public static class jtable1 extends JFrame {  
+   public  void tablaturnos(ArrayList <Turno> turnos){
+       DefaultTableModel modelo = new DefaultTableModel();
+       for (Turno turno : turnos) {
+    Object[] fila = {
+       turno.getCodigoSeg(),
+       turno.getTipoNota(),
+       turno.getAlum(),
+       turno.getFechaTurno(),
+    };
+    modelo.addRow(fila);
+       }
+       JTable tabla = new JTable(modelo);
+JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay muchos datos
+ add(scrollPane, BorderLayout.CENTER);
+ setVisible(true);
 
-    public static void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   // public static void dispose() {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+}
+
+   
+   
+
+    //public static void dispose() {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  }
 }
