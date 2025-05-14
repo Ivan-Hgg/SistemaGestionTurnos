@@ -10,6 +10,7 @@ package Vista;
  * @author carli
  */
 import Controlador.Controlador;
+import javax.swing.JTextField;
 public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
     /**
@@ -28,12 +29,28 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Regresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Regresar = new javax.swing.JButton();
+        SDia = new javax.swing.JTextField();
+        SMes = new javax.swing.JTextField();
+        SAño = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Regresar1 = new javax.swing.JButton();
+        Seleccionar = new javax.swing.JButton();
+
+        Regresar.setBackground(new java.awt.Color(0, 0, 102));
+        Regresar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,14 +59,6 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Seleccion dia ");
-
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 de abril", "2 de abril", "3 de abril", "4 de abril", "5 de abril", "6 de abril", "7 de abril", "8 de abril", "9 de abril", "10 de abril", "11 de abril", "12 de abril", "13 de abril", "14 de abril", "15 de abril", "16 de abril", "17 de abril", "18 de abril", "19 de abril", "20 de abril", "21 de abril", "22 de abril", "23 de abril", "24 de abril", "25 de abril", "26 de abril", "27 de abril", "28 de abril", "29 de abril", "30 de abril" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,13 +80,46 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        Regresar.setBackground(new java.awt.Color(0, 0, 102));
-        Regresar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Regresar.setForeground(new java.awt.Color(255, 255, 255));
-        Regresar.setText("Regresar");
-        Regresar.addActionListener(new java.awt.event.ActionListener() {
+        SDia.setToolTipText("");
+        SDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegresarActionPerformed(evt);
+                SDiaActionPerformed(evt);
+            }
+        });
+
+        SMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SMesActionPerformed(evt);
+            }
+        });
+
+        SAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SAñoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("/");
+
+        jLabel5.setText("/");
+
+        Regresar1.setBackground(new java.awt.Color(0, 0, 102));
+        Regresar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Regresar1.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar1.setText("Regresar");
+        Regresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Regresar1ActionPerformed(evt);
+            }
+        });
+
+        Seleccionar.setBackground(new java.awt.Color(0, 0, 102));
+        Seleccionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Seleccionar.setForeground(new java.awt.Color(255, 255, 255));
+        Seleccionar.setText("Seleccionar");
+        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeleccionarActionPerformed(evt);
             }
         });
 
@@ -86,19 +128,33 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(65, 65, 65)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(SDia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SMes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SAño, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(Regresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,24 +164,50 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SDia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SAño, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(SMes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Seleccionar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Regresar)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(296, Short.MAX_VALUE)
+                    .addComponent(Regresar1)
+                    .addGap(14, 14, 14)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
       Controlador.regresarInterfazAdminVerTurnos(this);
     }//GEN-LAST:event_RegresarActionPerformed
+
+    private void SDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SDiaActionPerformed
+
+    private void SMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SMesActionPerformed
+
+    private void Regresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar1ActionPerformed
+        Controlador.regresarInterfazAdminVerTurnos(this);
+    }//GEN-LAST:event_Regresar1ActionPerformed
+
+    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
+     Controlador.validarFechaSeleccionada(this);
+
+    }//GEN-LAST:event_SeleccionarActionPerformed
+
+    private void SAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SAñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SAñoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +244,29 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
         });
     }
 
+public javax.swing.JTextField getSAño() {
+        return SAño;
+    }
+
+    public javax.swing.JTextField getSDia() {
+        return SDia;
+    }
+
+    public javax.swing.JTextField getSMes() {
+        return SMes;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Regresar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton Regresar1;
+    private javax.swing.JTextField SAño;
+    private javax.swing.JTextField SDia;
+    private javax.swing.JTextField SMes;
+    private javax.swing.JButton Seleccionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
