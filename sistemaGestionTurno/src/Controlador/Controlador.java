@@ -28,19 +28,23 @@ import javax.swing.JOptionPane;
 public class Controlador {
     private static Usuarios usuarios = new Usuarios();
     private static Turnos turnos = new Turnos();
-    private static Usuario alumno = new Usuario();
-    
+    private static Usuario alumno = new Usuario();//es el usuario actual
+    private static boolean banderaInicio = false;
     
     public static void inicio(){
         Interfaz1 i= new Interfaz1 ();
         i.setVisible(true);
         //Usuarios de prueba
-        Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
-        usuarios.agregarUsuario(u);
-        Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
-        usuarios.agregarUsuario(us);
-        Usuario usu = new Usuario("c@alu.frt.utn.edu.ar", "3", "3", 3, false, 3);//admin
-        usuarios.agregarUsuario(usu);
+        if(banderaInicio == false){
+            Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
+            usuarios.agregarUsuario(u);
+            Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
+            usuarios.agregarUsuario(us);
+            Usuario usu = new Usuario("c@alu.frt.utn.edu.ar", "3", "3", 3, false, 3);//admin
+            usuarios.agregarUsuario(usu);
+            banderaInicio=true;
+        }
+        System.out.println("");
         usuarios.mostrar();
     }
     
@@ -58,8 +62,7 @@ public class Controlador {
                 i.dispose();
                 if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
                     //abre la interfaz del turno del usuario, no se cual es
-                    GestionDeTurno g = new GestionDeTurno();
-                    g.setVisible(true);
+                    GestionDeTurno g = new GestionDeTurno();g.setVisible(true);
                     alumno.setLegajo(legajo);
                     
                 }else{//abre la interfaz siguiente del admin
@@ -135,7 +138,7 @@ public class Controlador {
                 JOptionPane.showMessageDialog(i, "Datos Correctos", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
                 i.dispose();//para cerrar y volver a la pantalla inicial en caso de todo correcto
                 inicio();
-                usuarios.mostrar();
+                //usuarios.mostrar();
             }else{
                 i.getApeNomAlum().setText("");
                 i.getContraseña().setText("");
