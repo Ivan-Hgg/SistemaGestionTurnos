@@ -116,7 +116,7 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
-      Controlador.regresarInterfazAdminConfig();
+      Controlador.regresarInterfazAdminConfig(this);
     }//GEN-LAST:event_RegresarActionPerformed
 
     /**

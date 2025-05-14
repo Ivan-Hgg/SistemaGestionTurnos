@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
 import java.util.ArrayList;
@@ -16,6 +13,14 @@ public class Usuarios {
     public Usuarios() {
     }
     
+    public Usuario buscarUsuarioPorLegajo(int legajo) {
+    for (Usuario usu : usuarios) {
+        if (usu.getLegajo() == legajo) {
+            return usu;
+        }
+    }
+    return null;
+}
     
     public static void agregarUsuario(Usuario usu){
         usuarios.add(usu);

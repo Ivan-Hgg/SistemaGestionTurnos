@@ -1,17 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 //sadasd
+import Modelo.Fecha;
 import Modelo.Usuario;
 import Modelo.Usuarios;
+import Modelo.Turno;
+import Modelo.Turnos;
+
+        
+import Vista.AgregarDocumentos;
 import Vista.GestionDeTurno;
 import Vista.Interfaz1;
 import Vista.InterfazAdmin2;
 import Vista.InterfazAdminConfig;
 import Vista.InterfazAdminVerTurnos;
 import Vista.RegistroDatosAlumno;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +27,8 @@ import javax.swing.JOptionPane;
  */
 public class Controlador {
     private static Usuarios usuarios = new Usuarios();
-    
+    private static Turnos turnos = new Turnos();
+    private static Usuario alumno = new Usuario();
     
     
     public static void inicio(){
@@ -36,6 +44,8 @@ public class Controlador {
         usuarios.mostrar();
     }
     
+    
+    
     public static void IniciarSesion(Interfaz1 i){
         
         try {
@@ -48,6 +58,10 @@ public class Controlador {
                 i.dispose();
                 if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
                     //abre la interfaz del turno del usuario, no se cual es
+                    GestionDeTurno g = new GestionDeTurno();
+                    g.setVisible(true);
+                    alumno.setLegajo(legajo);
+                    
                 }else{//abre la interfaz siguiente del admin
                     InterfazAdmin2 vist = new InterfazAdmin2();vist.setVisible(true);//creo q esta era la interfaz del admin
                 }
@@ -173,13 +187,97 @@ public class Controlador {
         RegistroDatosAlumno v = new RegistroDatosAlumno();
         v.setVisible(true);
     }
-   public static void regresarInterfazAdminConfig(){
-         Controlador.dispose();
+////<<<<<<< HEAD
+   public static void regresarInterfazAdminConfig(InterfazAdminConfig i){
+        i.dispose();
         InterfazAdmin2 vist = new InterfazAdmin2();
         vist.setVisible(true);
    }         
-
-    public static void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   public static void regresarInterfazAdminConfig(InterfazAdminVerTurnos i){
+        i.dispose();
+        InterfazAdmin2 vist = new InterfazAdmin2();
+        vist.setVisible(true);
+   }         
+//=======
+    
+    public static void GestionDeTurno(Interfaz1 i){
+        i.dispose();
+        GestionDeTurno g = new GestionDeTurno();
+        g.setVisible(true);
     }
+    
+    
+    public static void AgregarDocumentos(GestionDeTurno g){
+        g.dispose();
+        AgregarDocumentos a = new AgregarDocumentos();
+        a.setVisible(true);
+    }
+    
+    public static void ConfirmarTurno(GestionDeTurno g) {
+    String tipoGestion = g.getComboTipoGestion().getSelectedItem().toString();
+    String fechaTexto = g.getComboFecha().getSelectedItem().toString();
+
+    // Convertir texto a fecha 
+    int dia = Integer.parseInt(fechaTexto.split(" ")[0]);
+    int mes = 4; // fijo porque es abril
+    int anio = 2025;
+
+    // Asignar horario automático (
+    int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
+    int min = Math.random() < 0.5 ? 0 : 30;
+
+    Fecha fecha = new Fecha(dia, mes, anio, hora, min);
+
+    // Simular usuario logueado 
+    Usuario u = usuarios.buscarUsuarioPorLegajo(alumno.getLegajo());
+    if (u == null) {
+        JOptionPane.showMessageDialog(g, "No se encontró el usuario actual", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String codigo = generarCodigoUnico();
+    Turno turno = new Turno(tipoGestion, codigo, fecha, u);
+    turnos.agregarTurnos(turno);
+    turnos.mostrar();
+
+    String mensaje = "✅ Turno confirmado:\n\n"
+                   + "📄 Tipo de gestión: " + tipoGestion + "\n"
+                   + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
+                   + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
+                   + "🔐 Código: " + codigo;
+
+    JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
+
+    g.dispose(); 
+    inicio(); 
+}
+
+    
+    private static String generarCodigoUnico() {
+    return java.util.UUID.randomUUID().toString().substring(0, 8);
+    
+    
+    }
+    
+    
+    public static void SeleccionDeArchivo(JFrame ventanaActual, ActionEvent evt) {
+        JFileChooser chooser = (JFileChooser) evt.getSource();
+
+        if (evt.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)) {
+            File archivo = chooser.getSelectedFile();
+            System.out.println("Archivo seleccionado: " + archivo.getAbsolutePath());
+
+            ventanaActual.dispose();  // Cerramos la ventana actual
+
+            // Si querés pasar el archivo, usá un constructor personalizado:
+            GestionDeTurno siguientePantalla = new GestionDeTurno(); 
+            siguientePantalla.setVisible(true);
+
+        } else if (evt.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
+            ventanaActual.dispose();  // Cerramos la ventana actual
+            new GestionDeTurno().setVisible(true);
+        }
+    }
+            
+//>>>>>>> ramaJosue
 }
