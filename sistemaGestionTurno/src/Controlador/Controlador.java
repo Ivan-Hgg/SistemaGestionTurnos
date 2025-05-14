@@ -54,6 +54,7 @@ private static LocalDate fechaHastaGlobal;
         Usuario usu = new Usuario("c@alu.frt.utn.edu.ar", "3", "3", 3, false, 3);//admin
         usuarios.agregarUsuario(usu);
         usuarios.mostrar();
+        turnos.mostrar();
     }
     
     public static void IniciarSesion(Interfaz1 i){
@@ -308,6 +309,22 @@ public static void validarFechaSeleccionada(InterfazAdminVerTurnos ventana) {
         // Si todo está bien
         JOptionPane.showMessageDialog(ventana, "Fecha ingresada correctamente: " + fecha.toString(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
+        int diaTurno=0;
+        int mesTurno=0;
+        int añoTurno=0;
+        
+        
+        
+        
+        if(dia==diaTurno && mes==mesTurno && año==añoTurno){
+            InterfazAdminVerTurnos v= new InterfazAdminVerTurnos();
+            Controlador.llenarJTable(v);
+        }
+        
+        
+        
+        
+        
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(ventana, "Todos los campos deben ser números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
     } catch (DateTimeException ex) {
@@ -315,10 +332,65 @@ public static void validarFechaSeleccionada(InterfazAdminVerTurnos ventana) {
     }
 }
 
+    /*public static void llenarJTable(InterfazAdminVerTurnos v){
+    DefaultTableModel datos = (DefaultTableModel) v.getjTable1().getModel();
+    datos.setNumRows(0); 
+    
+     for (Turno turno : turnos.getTurnos()) { 
+        Object[] fila = {
+       turno.getCodigoSeg(),
+       turno.getTipoNota(),
+       turno.getAlum(),
+       turno.getFechaTurno(),
+        };
+        datos.addRow(fila); 
+    }
+    }*/
 
+
+//PRUEBA DE FUNCION LLENAR JTABLE
+
+public static void llenarJTable(InterfazAdminVerTurnos v) {
+    DefaultTableModel datos = (DefaultTableModel) v.getjTable1().getModel();
+    datos.setNumRows(0);
+
+    String diaStr = v.getSDia().getText().trim();
+    String mesStr = v.getSMes().getText().trim();
+    String anioStr = v.getSAño().getText().trim();
+
+    boolean filtrarPorFecha = !diaStr.isEmpty() && !mesStr.isEmpty() && !anioStr.isEmpty();
+
+    for (Turno turno : turnos.getTurnos()) {
+        Fecha fecha = turno.getFechaTurno();
+
+        if (filtrarPorFecha) {
+            try {
+                int dia = Integer.parseInt(diaStr);
+                int mes = Integer.parseInt(mesStr);
+                int anio = Integer.parseInt(anioStr);
+
+                if (fecha.getDia() != dia || fecha.getMes() != mes || fecha.getAnio() != anio) {
+                    continue; // no coincide la fecha
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(v, "⚠️ Fecha inválida. Asegúrese de que día, mes y año sean números.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        Object[] fila = {
+            turno.getCodigoSeg(),
+            turno.getTipoNota(),
+            turno.getAlum().getLegajo(),
+            turno.getAlum().getApeNom(),
+        };
+
+        datos.addRow(fila);
+    }
+}
 
     
-  public static class jtable1 extends JFrame {  
+ /* public static class jtable1 extends JFrame {  
    public  void tablaturnos(ArrayList <Turno> turnos){
        DefaultTableModel modelo = new DefaultTableModel();
       
@@ -348,7 +420,7 @@ JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay 
 
     //public static void dispose() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-  }
+  }*/
   
    public static void GestionDeTurno(Interfaz1 i){
         i.dispose();

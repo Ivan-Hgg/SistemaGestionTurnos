@@ -202,6 +202,7 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
      Controlador.validarFechaSeleccionada(this);
+     Controlador.llenarJTable(this);
 
     }//GEN-LAST:event_SeleccionarActionPerformed
 
@@ -278,4 +279,69 @@ public javax.swing.JTextField getSAño() {
     public void setRegresar(javax.swing.JButton Regresar) {
         this.Regresar = Regresar;
     }
+
+    public javax.swing.JButton getRegresar1() {
+        return Regresar1;
+    }
+
+    public void setRegresar1(javax.swing.JButton Regresar1) {
+        this.Regresar1 = Regresar1;
+    }
+
+    public javax.swing.JButton getSeleccionar() {
+        return Seleccionar;
+    }
+
+    public void setSeleccionar(javax.swing.JButton Seleccionar) {
+        this.Seleccionar = Seleccionar;
+    }
+
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(javax.swing.JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(javax.swing.JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+    
 }

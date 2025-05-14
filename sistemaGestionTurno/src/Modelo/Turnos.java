@@ -10,6 +10,14 @@ import java.util.ArrayList;
 public class Turnos {//clase especial para el arraylist de Turnos
     private static ArrayList <Turno> turnos = new ArrayList<>();
 
+    public static ArrayList <Turno> getTurnos() {
+        return turnos;
+    }
+
+    public static void setTurnos(ArrayList <Turno> aTurnos) {
+        turnos = aTurnos;
+    }
+
     public Turnos() {
     }
     
