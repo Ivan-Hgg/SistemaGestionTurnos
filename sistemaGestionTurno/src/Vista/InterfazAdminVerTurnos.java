@@ -53,6 +53,7 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ver Trunos Agendados");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Ver Turnos Disponibles");
@@ -104,7 +105,7 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
         jLabel5.setText("/");
 
         Regresar1.setBackground(new java.awt.Color(0, 0, 102));
-        Regresar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Regresar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Regresar1.setForeground(new java.awt.Color(255, 255, 255));
         Regresar1.setText("Regresar");
         Regresar1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,13 +149,11 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
                                 .addComponent(SAño, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(Seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(Regresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(30, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(Regresar1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,13 +171,10 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
                     .addComponent(SMes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Seleccionar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(296, Short.MAX_VALUE)
-                    .addComponent(Regresar1)
-                    .addGap(14, 14, 14)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(Regresar1)
+                .addGap(15, 15, 15))
         );
 
         pack();

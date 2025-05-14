@@ -81,23 +81,27 @@ public class GestionDeTurno extends javax.swing.JFrame {
         jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestion de Turno Alumno");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Gestión de Turno");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Tipo de Gestión");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Subir archivo ");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Seleccionar Fecha");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Se le asignara el horario automaticamente");
 
+        ComboTipoGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ComboTipoGestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inscripcion fuera de termino", "Cambio de comision", "Cambio de plan", "Baja de regularidad" }));
 
+        agregarDocumentosBoton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregarDocumentosBoton.setText("Agregar documentos");
         agregarDocumentosBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +109,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
             }
         });
 
+        ComboFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ComboFecha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3 de abril", "4 de abril", "5 de abril", "6 de abril", "7 de abril", "8 de abril" }));
         ComboFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +118,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
         });
 
         continuar.setBackground(new java.awt.Color(0, 0, 102));
-        continuar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        continuar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         continuar.setForeground(new java.awt.Color(255, 255, 255));
         continuar.setText("Confirmar turno");
         continuar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +128,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
         });
 
         cancelarBoton.setBackground(new java.awt.Color(0, 0, 102));
-        cancelarBoton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cancelarBoton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cancelarBoton.setForeground(new java.awt.Color(255, 255, 255));
         cancelarBoton.setText("Cancelar");
         cancelarBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -139,33 +144,29 @@ public class GestionDeTurno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3))
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ComboTipoGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(agregarDocumentosBoton)
-                            .addComponent(ComboFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancelarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel1)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ComboTipoGestion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ComboFecha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(agregarDocumentosBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +192,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(continuar)
                     .addComponent(cancelarBoton))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
