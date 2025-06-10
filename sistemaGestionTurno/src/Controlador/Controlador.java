@@ -2,12 +2,10 @@
 package Controlador;
 //sadasd
 import Modelo.Fecha;
-import Modelo.Usuario;
-import Modelo.Usuarios;
 import Modelo.Turno;
 import Modelo.Turnos;
-
-        
+import Modelo.Usuario;
+import Modelo.Usuarios;
 import Vista.AgregarDocumentos;
 import Vista.GestionDeTurno;
 import Vista.Interfaz1;
@@ -15,11 +13,20 @@ import Vista.InterfazAdmin2;
 import Vista.InterfazAdminConfig;
 import Vista.InterfazAdminVerTurnos;
 import Vista.RegistroDatosAlumno;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+
 
 /**
  *
@@ -28,14 +35,16 @@ import javax.swing.JOptionPane;
 public class Controlador {
     private static Usuarios usuarios = new Usuarios();
     private static Turnos turnos = new Turnos();
-    private static Usuario alumno = new Usuario();//es el usuario actual
+    private static Usuario alumno = new Usuario();
+    private static LocalDate fechaDesdeGlobal;
+    private static LocalDate fechaHastaGlobal;
     private static boolean banderaInicio = false;
     
     public static void inicio(){
         Interfaz1 i= new Interfaz1 ();
         i.setVisible(true);
         //Usuarios de prueba
-        if(banderaInicio == false){
+       if(banderaInicio == false){
             Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
             usuarios.agregarUsuario(u);
             Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
@@ -46,6 +55,9 @@ public class Controlador {
         }
         System.out.println("");
         usuarios.mostrar();
+        System.out.println("");
+        turnos.mostrar();
+        System.out.println("");
     }
     
     
@@ -62,9 +74,9 @@ public class Controlador {
                 i.dispose();
                 if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
                     //abre la interfaz del turno del usuario, no se cual es
-                    GestionDeTurno g = new GestionDeTurno();g.setVisible(true);
+                    GestionDeTurno g = new GestionDeTurno();
+                    g.setVisible(true);
                     alumno.setLegajo(legajo);
-                    
                 }else{//abre la interfaz siguiente del admin
                     InterfazAdmin2 vist = new InterfazAdmin2();vist.setVisible(true);//creo q esta era la interfaz del admin
                 }
@@ -158,6 +170,67 @@ public class Controlador {
         
         
     }
+  public static void mensajeConfirmacionInt(InterfazAdminConfig e) {
+    try {
+        String dDiaStr = e.getDesdeDia().getText().trim();
+        String dMesStr = e.getDesdeMes().getText().trim();
+        String dAñoStr = e.getDesdeAño().getText().trim();
+
+        String hDiaStr = e.getHastaDia().getText().trim();
+        String hMesStr = e.getHastaMes().getText().trim();
+        String hAñoStr = e.getHastaAño().getText().trim();
+
+        // Validar que no haya campos vacíos
+        if (dDiaStr.isEmpty() || dMesStr.isEmpty() || dAñoStr.isEmpty()
+                || hDiaStr.isEmpty() || hMesStr.isEmpty() || hAñoStr.isEmpty()) {
+            JOptionPane.showMessageDialog(e, "Todos los campos de la fecha deben estar completos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int dDia = Integer.parseInt(dDiaStr);
+        int dMes = Integer.parseInt(dMesStr);
+        int dAño = Integer.parseInt(dAñoStr);
+
+        int hDia = Integer.parseInt(hDiaStr);
+        int hMes = Integer.parseInt(hMesStr);
+        int hAño = Integer.parseInt(hAñoStr);
+
+        // Validar rangos
+        if (dDia < 1 || dDia > 31 || hDia < 1 || hDia > 31) {
+            JOptionPane.showMessageDialog(e, "El día debe estar entre 1 y 31.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (dMes < 1 || dMes > 12 || hMes < 1 || hMes > 12) {
+            JOptionPane.showMessageDialog(e, "El mes debe estar entre 1 y 12.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (dAño != 2025 || hAño != 2025) {
+            JOptionPane.showMessageDialog(e, "El año debe ser 2025.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar fechas reales (por ejemplo, que no exista 31/02/2025)
+        LocalDate fechaDesde = LocalDate.of(dAño, dMes, dDia);
+        LocalDate fechaHasta = LocalDate.of(hAño, hMes, hDia);
+
+        // Validar que fecha de inicio no sea posterior a la final
+        if (fechaDesde.isAfter(fechaHasta)) {
+            JOptionPane.showMessageDialog(e, "La fecha de inicio no puede ser posterior a la fecha de fin.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si todo está bien
+        JOptionPane.showMessageDialog(e, "Fechas ingresadas correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(e, "Todos los campos deben ser números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (DateTimeException ex) {
+        JOptionPane.showMessageDialog(e, "Una de las fechas ingresadas no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     
     
     /*public static void interfazAdmin1(InterfazInicial i){
@@ -190,20 +263,171 @@ public class Controlador {
         RegistroDatosAlumno v = new RegistroDatosAlumno();
         v.setVisible(true);
     }
-////<<<<<<< HEAD
    public static void regresarInterfazAdminConfig(InterfazAdminConfig i){
-        i.dispose();
+         i.dispose();
         InterfazAdmin2 vist = new InterfazAdmin2();
         vist.setVisible(true);
-   }         
-   public static void regresarInterfazAdminConfig(InterfazAdminVerTurnos i){
-        i.dispose();
+   }
+    public static void regresarInterfazAdminVerTurnos(InterfazAdminVerTurnos i){
+         i.dispose();
         InterfazAdmin2 vist = new InterfazAdmin2();
         vist.setVisible(true);
-   }         
-//=======
+   } 
     
-    public static void GestionDeTurno(Interfaz1 i){
+
+
+public static void validarFechaSeleccionada(InterfazAdminVerTurnos ventana) {
+    try {
+        String diaStr = ventana.getSDia().getText().trim();
+        String mesStr = ventana.getSMes().getText().trim();
+        String añoStr = ventana.getSAño().getText().trim();
+
+        // Validar que no haya campos vacíos
+        if (diaStr.isEmpty() || mesStr.isEmpty() || añoStr.isEmpty()) {
+            JOptionPane.showMessageDialog(ventana, "Todos los campos de la fecha deben estar completos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int dia = Integer.parseInt(diaStr);
+        int mes = Integer.parseInt(mesStr);
+        int año = Integer.parseInt(añoStr);
+
+        // Validar rangos
+        if (dia < 1 || dia > 31) {
+            JOptionPane.showMessageDialog(ventana, "El día debe estar entre 1 y 31.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (mes < 1 || mes > 12) {
+            JOptionPane.showMessageDialog(ventana, "El mes debe estar entre 1 y 12.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (año != 2025) {
+            JOptionPane.showMessageDialog(ventana, "El año debe ser 2025.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar que la fecha exista
+        LocalDate fecha = LocalDate.of(año, mes, dia);
+
+        // Si todo está bien
+        JOptionPane.showMessageDialog(ventana, "Fecha ingresada correctamente: " + fecha.toString(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        int diaTurno=0;
+        int mesTurno=0;
+        int añoTurno=0;
+        
+        
+        
+        
+        if(dia==diaTurno && mes==mesTurno && año==añoTurno){
+            InterfazAdminVerTurnos v= new InterfazAdminVerTurnos();
+            Controlador.llenarJTable(v);
+        }
+        
+        
+        
+        
+        
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(ventana, "Todos los campos deben ser números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (DateTimeException ex) {
+        JOptionPane.showMessageDialog(ventana, "La fecha ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+    /*public static void llenarJTable(InterfazAdminVerTurnos v){
+    DefaultTableModel datos = (DefaultTableModel) v.getjTable1().getModel();
+    datos.setNumRows(0); 
+    
+     for (Turno turno : turnos.getTurnos()) { 
+        Object[] fila = {
+       turno.getCodigoSeg(),
+       turno.getTipoNota(),
+       turno.getAlum(),
+       turno.getFechaTurno(),
+        };
+        datos.addRow(fila); 
+    }
+    }*/
+
+
+//PRUEBA DE FUNCION LLENAR JTABLE
+
+public static void llenarJTable(InterfazAdminVerTurnos v) {
+    DefaultTableModel datos = (DefaultTableModel) v.getjTable1().getModel();
+    datos.setNumRows(0);
+
+    String diaStr = v.getSDia().getText().trim();
+    String mesStr = v.getSMes().getText().trim();
+    String anioStr = v.getSAño().getText().trim();
+
+    boolean filtrarPorFecha = !diaStr.isEmpty() && !mesStr.isEmpty() && !anioStr.isEmpty();
+
+    for (Turno turno : turnos.getTurnos()) {
+        Fecha fecha = turno.getFechaTurno();
+
+        if (filtrarPorFecha) {
+            try {
+                int dia = Integer.parseInt(diaStr);
+                int mes = Integer.parseInt(mesStr);
+                int anio = Integer.parseInt(anioStr);
+
+                if (fecha.getDia() != dia || fecha.getMes() != mes || fecha.getAnio() != anio) {
+                    continue; // no coincide la fecha
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(v, "⚠️ Fecha inválida. Asegúrese de que día, mes y año sean números.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        Object[] fila = {
+            turno.getCodigoSeg(),
+            turno.getTipoNota(),
+            turno.getAlum().getLegajo(),
+            turno.getAlum().getApeNom(),
+        };
+
+        datos.addRow(fila);
+    }
+}
+
+    
+ /* public static class jtable1 extends JFrame {  
+   public  void tablaturnos(ArrayList <Turno> turnos){
+       DefaultTableModel modelo = new DefaultTableModel();
+      
+ 
+
+
+       for (Turno turno : turnos) {
+    Object[] fila = {
+       turno.getCodigoSeg(),
+       turno.getTipoNota(),
+       turno.getAlum(),
+       turno.getFechaTurno(),
+    };
+    modelo.addRow(fila);
+       }
+       JTable tabla = new JTable(modelo);
+JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay muchos datos
+ add(scrollPane, BorderLayout.CENTER);
+ setVisible(true);
+
+   // public static void dispose() {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+}
+
+   
+   
+
+    //public static void dispose() {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  }*/
+  
+   public static void GestionDeTurno(Interfaz1 i){
         i.dispose();
         GestionDeTurno g = new GestionDeTurno();
         g.setVisible(true);
@@ -281,6 +505,70 @@ public class Controlador {
             new GestionDeTurno().setVisible(true);
         }
     }
+    
+    
+    
+    /* si anda todo bien borrar esto
+    public static void ConfirmarTurno(GestionDeTurno g) {
+    String tipoGestion = g.getComboTipoGestion().getSelectedItem().toString();
+    String fechaTexto = g.getComboFecha().getSelectedItem().toString();
+
+    // Convertir texto a fecha 
+    int dia = Integer.parseInt(fechaTexto.split(" ")[0]);
+    int mes = 4; // fijo porque es abril
+    int anio = 2025;
+
+    // Asignar horario automático (
+    int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
+    int min = Math.random() < 0.5 ? 0 : 30;
+
+    Fecha fecha = new Fecha(dia, mes, anio, hora, min);
+
+    // Simular usuario logueado 
+    Usuario u = usuarios.buscarUsuarioPorLegajo(alumno.getLegajo());
+    if (u == null) {
+        JOptionPane.showMessageDialog(g, "No se encontró el usuario actual", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String codigo = generarCodigoUnico();
+    Turno turno = new Turno(tipoGestion, codigo, fecha, u);
+    turnos.agregarTurnos(turno);
+    turnos.mostrar();
+
+    String mensaje = "✅ Turno confirmado:\n\n"
+                   + "📄 Tipo de gestión: " + tipoGestion + "\n"
+                   + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
+                   + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
+                   + "🔐 Código: " + codigo;
+
+    JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
+
+    g.dispose(); 
+    inicio(); 
+}
+*/
+    
+    
+    /* brrora tmb
+    public static void SeleccionDeArchivo(JFrame ventanaActual, ActionEvent evt) {
+        JFileChooser chooser = (JFileChooser) evt.getSource();
+
+        if (evt.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)) {
+            File archivo = chooser.getSelectedFile();
+            System.out.println("Archivo seleccionado: " + archivo.getAbsolutePath());
+
+            ventanaActual.dispose();  // Cerramos la ventana actual
+
+            // Si querés pasar el archivo, usá un constructor personalizado:
+            GestionDeTurno siguientePantalla = new GestionDeTurno(); 
+            siguientePantalla.setVisible(true);
+
+        } else if (evt.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
+            ventanaActual.dispose();  // Cerramos la ventana actual
+            new GestionDeTurno().setVisible(true);
+        }
+    }
             
-//>>>>>>> ramaJosue
+//>>>>>>> ramaJosue*/
 }
