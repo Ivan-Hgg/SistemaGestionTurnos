@@ -1,6 +1,8 @@
 
 package Controlador;
-//sadasd
+//para la coneccion con base de datos
+import java.sql.*;
+
 import Modelo.Fecha;
 import Modelo.Turno;
 import Modelo.Turnos;
@@ -27,11 +29,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-
-/**
- *
- * @author Ivan y otros
- */
 public class Controlador {
     private static Usuarios usuarios = new Usuarios();
     private static Turnos turnos = new Turnos();
@@ -40,26 +37,26 @@ public class Controlador {
     private static LocalDate fechaHastaGlobal;
     private static boolean banderaInicio = false;
     //A futuro mejorar que se crean muchas instancias de las vistas para cerrar o abrir,  solucion: instanciar una vez aqui y llamar al objeto en cada lugar donde se crea la instancia
-    public static void inicio(){
-        Interfaz1 i= new Interfaz1 ();
-        i.setVisible(true);
-        //Usuarios de prueba
-       if(banderaInicio == false){
-            Usuario u = new Usuario("a@alu.frt.utn.edu.ar", "1", "1", 1, true, 1);//alum
-            usuarios.agregarUsuario(u);
-            Usuario us = new Usuario("b@alu.frt.utn.edu.ar", "2", "2", 2, true, 2);//alum
-            usuarios.agregarUsuario(us);
-            Usuario usu = new Usuario("c@alu.frt.utn.edu.ar", "3", "3", 3, false, 3);//admin
-            usuarios.agregarUsuario(usu);
-            banderaInicio=true;
-        }
-        System.out.println("");
-        usuarios.mostrar();
-        System.out.println("");
-        turnos.mostrar();
-        System.out.println("");
-    }
+
     
+    public static void inicio(){
+        
+        
+        //establezco la coneccion con la base de datos:
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgt", "root", "MYSQL1259");
+            Statement stmt = c.createStatement();
+            
+            
+            System.out.println("conectado");
+            Interfaz1 i= new Interfaz1 ();
+            i.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("fin");
+    }
     
     
     public static void IniciarSesion(Interfaz1 i){
