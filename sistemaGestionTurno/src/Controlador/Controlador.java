@@ -40,22 +40,8 @@ public class Controlador {
 
     
     public static void inicio(){
-        
-        
-        //establezco la coneccion con la base de datos:
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sgt", "root", "MYSQL1259");
-            Statement stmt = c.createStatement();
-            
-            
-            System.out.println("conectado");
-            Interfaz1 i= new Interfaz1 ();
-            i.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("fin");
+        Interfaz1 i= new Interfaz1 ();
+        i.setVisible(true);
     }
     
     

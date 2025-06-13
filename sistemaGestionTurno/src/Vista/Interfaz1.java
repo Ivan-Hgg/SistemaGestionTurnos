@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.Controlador;
+import Controlador.ControladorInterfaz1;
 import javax.swing.JTextField;
 
 /**
@@ -139,13 +140,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void RegistroDatosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroDatosBotonActionPerformed
         // TODO add your handling code here:
-        Controlador.CrearUsuario(this);
+        ControladorInterfaz1.CrearUsuario(this);
     }//GEN-LAST:event_RegistroDatosBotonActionPerformed
 
     private void iniciarSesionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBotonActionPerformed
         //a los usuarios administradores se le asignara un legajo especial para que puedan iniciar sesion
         //desde la misma interfaz.
-        Controlador.IniciarSesion(this);
+        ControladorInterfaz1.IniciarSesion(this);
         
         
     }//GEN-LAST:event_iniciarSesionBotonActionPerformed
