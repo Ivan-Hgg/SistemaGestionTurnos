@@ -39,7 +39,7 @@ public class Controlador {
     private static LocalDate fechaDesdeGlobal;
     private static LocalDate fechaHastaGlobal;
     private static boolean banderaInicio = false;
-    
+    //A futuro mejorar que se crean muchas instancias de las vistas para cerrar o abrir,  solucion: instanciar una vez aqui y llamar al objeto en cada lugar donde se crea la instancia
     public static void inicio(){
         Interfaz1 i= new Interfaz1 ();
         i.setVisible(true);
@@ -571,4 +571,9 @@ JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay 
     }
             
 //>>>>>>> ramaJosue*/
+
+    public static void regresarRegistroDatos(RegistroDatosAlumno i) {
+        i.dispose();
+        Interfaz1 i1= new Interfaz1(); i1.setVisible(true);
+    }
 }

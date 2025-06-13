@@ -38,3 +38,4 @@ nbdist/
 .nb-gradle/
 out/
 target/
+/sistemaGestionTurno/nbproject/private/
