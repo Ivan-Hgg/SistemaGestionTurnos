@@ -196,7 +196,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         // TODO add your handling code here:
-        Controlador.RegistroDatos(this);
+        //Controlador.RegistroDatos(this);
     }//GEN-LAST:event_continuarActionPerformed
 
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed

@@ -10,34 +10,34 @@ package Modelo;
  */
 public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU DIFERENCIA ESTÁ
     //EN LA VARIBLE BOLEANA DE TIPO
+    
+    private int id;
     private String correo;
     private int legajo;
     private String contraseña;
     private String apeNom;
-    private int dni;
     private boolean tipoUsu;//false para admin, true para alumno
     //private Fecha fechaAlta = new Fecha();// POR AHORA NO ES NECESARIO fecha en que se creo la cuenta del usuario
 
     public Usuario() {
     }
 
-    public Usuario(String correo, String contraseña, String apeNom, int dni, boolean tipo, int legajo) {
+    public Usuario(int id, String correo, int legajo, String contraseña, String apeNom, boolean tipoUsu) {
+        this.id = id;
         this.correo = correo;
+        this.legajo = legajo;
         this.contraseña = contraseña;
         this.apeNom = apeNom;
-        this.dni = dni;
-        this.tipoUsu = tipo;
+        this.tipoUsu = tipoUsu;
+    }
+
+    public Usuario(String correo, int legajo, String contraseña, String apeNom) {
+        this.correo = correo;
         this.legajo = legajo;
+        this.contraseña = contraseña;
+        this.apeNom = apeNom;
     }
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
+    
     public String getCorreo() {
         return correo;
     }
@@ -52,14 +52,6 @@ public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public String getApeNom() {
-        return apeNom;
-    }
-
-    public void setApeNom(String apeNom) {
-        this.apeNom = apeNom;
     }
 
     public boolean isTipoUsu() {
@@ -77,11 +69,28 @@ public class Usuario { //EN USUARIO VA A ENGLOBAR A ALUMNO Y A ADMINISTRADOR. SU
     public void setLegajo(int legajo) {
         this.legajo = legajo;
     }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getApeNom() {
+        return apeNom;
+    }
+
+    public void setApeNom(String apeNom) {
+        this.apeNom = apeNom;
+    }
 
     @Override
     public String toString() {
-        return "Usuario{" + "correo=" + correo + ", legago=" + legajo + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", dni=" + dni + ", tipoUsu=" + tipoUsu + '}';
+        return "Usuario{" + "id=" + id + ", correo=" + correo + ", legajo=" + legajo + ", contrase\u00f1a=" + contraseña + ", apeNom=" + apeNom + ", tipoUsu=" + tipoUsu + '}';
     }
+
    
     
 }

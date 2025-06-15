@@ -8,6 +8,9 @@ import Controlador.Controlador;
 import Controlador.ControladorInterfaz1;
 import Modelo.BD;
 import Modelo.Documento;
+import Modelo.Intervalo;
+import Modelo.Usuario;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -21,14 +24,30 @@ public class SistemaGestionTurno {
     public static void main(String[] args) {
         // TODO code application logic here;
         BD b = new BD();
-        /*PRUEBAS DE BD
-        Documento d = new Documento("Baja de Regularidad");
-        d.setId(3);
+        
+        //PRUEBAS DED USUARIO
+        Usuario u= new Usuario("alu@", 58369, "EPICO", "JAJA");
+        b.agregarUsuario(u);
+        
+        /*pruiebas de base de datos de intervalo
+        Intervalo i1=new Intervalo(0, LocalDateTime.of(2023, 7, 15, 9, 0), LocalDateTime.of(2026, 6, 15, 17, 30));
+        b.agregarIntervalo(i1);
+        //i1.setId(3);
+        //b.modificarIntervalo(i1);
+        //b.eliminarIntervalo(i1);
+        System.out.println(b.obtenerIntervalo());
+/*
+        
+        
+        
+        /*PRUEBAS DE BD de docuemnto
+        Documento d = new Documento("Cambio de Comision");
+        d.setId(2);
         //b.agregarDocumento(d);
         //b.eliminarDocumento(2);
-        b.modificarDocumento(d);*/
+        b.modificarDocumento(d);
         System.out.println(b.obtenerDocumentos());
-        //ControladorInterfaz1.iniciarVentana();
+        ControladorInterfaz1.iniciarVentana();*/
     }
     
 }

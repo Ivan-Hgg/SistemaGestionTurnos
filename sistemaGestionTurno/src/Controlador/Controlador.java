@@ -78,7 +78,7 @@ public class Controlador {
         
         
     }
-    
+    /*
     public static void RegistroDatos(RegistroDatosAlumno i){//usado en RegistroDatosAlumno
         try {
             boolean bandera= false;//bandera para saber si hay datos con errores, en caso de que no es falso, si hay un error la bandera es verdadera
@@ -86,7 +86,6 @@ public class Controlador {
             int legajo= Integer.parseInt(i.getLegajoAlum().getText());
             String contraseña =i.getContraseña().getText();
             String apeNom = i.getApeNomAlum().getText();
-            int dni =Integer.parseInt(i.getDocumenAlum().getText());
             
             
             
@@ -127,7 +126,7 @@ public class Controlador {
             //SECCION MENSAJE DE ERROR
             if(bandera==false){
                 //registra los datos en una instancia y lo almacena en arraylist
-                Usuario us= new Usuario(correo, contraseña, apeNom, dni, true, legajo);
+                //Usuario us= new Usuario(correo, contraseña, apeNom, true, legajo);
                 usuarios.agregarUsuario(us);
                 
                 JOptionPane.showMessageDialog(i, "Datos Correctos", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
@@ -152,7 +151,7 @@ public class Controlador {
         }
         
         
-    }
+    }*/
   public static void mensajeConfirmacionInt(InterfazAdminConfig e) {
     try {
         String dDiaStr = e.getDesdeDia().getText().trim();
@@ -370,7 +369,7 @@ public static void llenarJTable(InterfazAdminVerTurnos v) {
             turno.getCodigoSeg(),
             turno.getTipoNota(),
             turno.getAlum().getLegajo(),
-            turno.getAlum().getApeNom(),
+            //turno.getAlum().getApeNom(),
         };
 
         datos.addRow(fila);
