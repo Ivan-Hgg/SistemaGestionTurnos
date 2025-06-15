@@ -5,7 +5,6 @@
 package Controlador;
 
 import Modelo.BD;
-import Modelo.Fecha;
 import Modelo.Turno;
 import Modelo.Usuario;
 import Vista.GestionDeTurno;
@@ -47,10 +46,12 @@ public class ControladorGestionDeTurno {
         // Asignar horario automático (
         int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
         int min = Math.random() < 0.5 ? 0 : 30;
-
+        
+/*      SOLUCIONEN ESTO QUE YA NO USAMOS LA FECHA ASI
         Fecha fecha = new Fecha(dia, mes, anio, hora, min);
+*/
 
-        /* NO SE NECESITA YA QUE LA COMPROBACION ES EN EL INICIO DE SESION
+        /* NO SE NECESITA YA QUE LA COMPROBACION ES EN EL INICIO DE SESION - BORRAR ESTO SI COINCIDEN
         Simular usuario logueado 
         Usuario u = usuarios.buscarUsuarioPorLegajo(alumno.getLegajo());
         if (u == null) {
