@@ -9,6 +9,7 @@ import Controlador.ControladorInterfaz1;
 import Modelo.BD;
 import Modelo.Documento;
 import Modelo.Intervalo;
+import Modelo.Turno;
 import Modelo.Usuario;
 import java.time.LocalDateTime;
 
@@ -24,10 +25,12 @@ public class SistemaGestionTurno {
     public static void main(String[] args) {
         // TODO code application logic here;
         BD b = new BD();
+        Turno t=new Turno(0, LocalDateTime.of(204, 8, 15, 9, 0), 1, "d", 4, 4);
+        b.agregarTurno(t);
         
-        //PRUEBAS DED USUARIO
-        Usuario u= new Usuario("alu@", 58369, "EPICO", "JAJA");
-        b.agregarUsuario(u);
+        /*PRUEBAS DED USUARIO
+        Usuario u= new Usuario("alu@", 58369, "PELO", "JAJA");
+        System.out.println(b.obtenerUsuario());
         
         /*pruiebas de base de datos de intervalo
         Intervalo i1=new Intervalo(0, LocalDateTime.of(2023, 7, 15, 9, 0), LocalDateTime.of(2026, 6, 15, 17, 30));

@@ -183,28 +183,90 @@ public class BD {
     }
     public void modificarContrUsuario(Usuario u){//SI FUNCIONA
         try {
-            PreparedStatement s = c.prepareStatement("UPDATE usuario SET CONTR=? WHERE idUSUARIO =?");
+            PreparedStatement s = c.prepareStatement("UPDATE usuario SET CONTR=? WHERE LEGAJO =?");
             s.setString(1, u.getContraseña());
-            s.setInt(2, u.getId());
+            s.setInt(2, u.getLegajo());
             s.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    //ELIMINA PASANDOLE EL CODIGO DEL OBJETO DIRECTAMENTE COMO PARAMETRO
-    public void eliminarUsuario(int codigo){//SI FUNCIONA
+    //ELIMINA PASANDOLE EL LEGAJO DEL OBJETO DIRECTAMENTE COMO PARAMETRO
+    public void eliminarUsuario(int leg){//SI FUNCIONA
         try {
             Statement s = c.createStatement();
-            s.executeUpdate("DELETE FROM usuario WHERE idUSUARIO="+codigo);
+            s.executeUpdate("DELETE FROM usuario WHERE LEGAJO="+leg);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    //POLIMORFISMO DE ELIMINAR DOCUMENTO, SACANDO EL ID DESDE EL OBJETO
+    //POLIMORFISMO DE ELIMINAR DOCUMENTO, SACANDO EL LEGAJO DESDE EL OBJETO
     public void eliminarUsuario(Usuario u){//SI FUNCIONA
         try {
             Statement s = c.createStatement();
-            s.executeUpdate("DELETE FROM usuario WHERE idUSUARIO="+u.getId());
+            s.executeUpdate("DELETE FROM usuario WHERE LEGAJO="+u.getLegajo());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    //ABMQ TURNOS -------------------------------------------------------------------------------------
+    public ArrayList<Turno> obtenerTurno(){//SI FUNCIONA
+        ArrayList<Turno> turs = new ArrayList<>();
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT * FROM turnos");
+            while(res.next()){
+                int idT = res.getInt("idTURNOS");
+                int idI= res.getInt("idINTERVALO");
+                int idU= res.getInt("idUSUARIO");
+                int idD= res.getInt("idDOCUMENTO");
+                String codseg= res.getString("CODSEG");
+
+                // Convertir correctamente
+                Timestamp tsIng = res.getTimestamp("FECHTUR");
+
+                LocalDateTime fechaTur = tsIng != null ? tsIng.toLocalDateTime() : null;
+
+                Turno tur = new Turno(idT, fechaTur, idD, codseg, idU, idI);
+                turs.add(tur);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return turs;
+    }
+    
+    
+    public void agregarTurno(Turno t){//SI FUNCIONA
+        try {
+            PreparedStatement s = c.prepareStatement("INSERT INTO turnos (idINTERVALO, idUSUARIO, idDOCUMENTOS, CODSEG, FECHTUR) values (?,?,?,?,?)");
+            s.setInt(1, t.getIdInt());
+            s.setInt(2, t.getIdAlum());
+            s.setInt(3, t.getIdDoc());
+            s.setString(4, t.getCodigoSeg());
+            s.setObject(5, t.getFechaTurno());
+            
+            s.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    //ELIMINA PASANDOLE EL LEGAJO DEL OBJETO DIRECTAMENTE COMO PARAMETRO
+    public void eliminarTurno(String codseg){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            s.executeUpdate("DELETE FROM turnos WHERE CODSEG="+codseg);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    //POLIMORFISMO DE ELIMINAR DOCUMENTO, SACANDO EL LEGAJO DESDE EL OBJETO
+    public void eliminarTurno(Turno t){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            s.executeUpdate("DELETE FROM usuario WHERE CODSEG="+t.getCodigoSeg());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

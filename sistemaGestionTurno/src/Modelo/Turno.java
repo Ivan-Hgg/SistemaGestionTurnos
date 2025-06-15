@@ -1,35 +1,33 @@
 
 package Modelo;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Ivan y otros
  */
 public class Turno {//clase de turno. Describir sus atributos y funciones.
-    private Fecha fechaTurno = new Fecha();//FECHA Y HORA DEL TURNO
-    private String tipoNota;//tipo de la nota/documento a presentar
+    private int id;
+    private LocalDateTime fechaTurno;//FECHA Y HORA DEL TURNO
+    private int idDoc;//tipo de la nota/documento a presentar
     private String codigoSeg;//codigo unico genreado aleatoriamente que identidica univocamente el turno. ID
-    private Usuario alum= new Usuario();//para relacion del legajo del alumno con su turno
-
+    private int idAlum;//para relacion del legajo del alumno con su turno
+    int idInt;
     public Turno() {
     }
 
-    public Turno(String tipoNota, String codigoSeg, Fecha fecha, Usuario alum) {
-        this.tipoNota = tipoNota;
+    public Turno(int id, LocalDateTime fechaTurno, int idDoc, String codigoSeg, int idAlum, int idInt) {
+        this.id = id;
+        this.fechaTurno = fechaTurno;
+        this.idDoc = idDoc;
         this.codigoSeg = codigoSeg;
-        this.fechaTurno = fecha;
-        this.alum= alum;
-        
+        this.idAlum = idAlum;
+        this.idInt = idInt;
     }
 
-    public String getTipoNota() {
-        return tipoNota;
-    }
-
-    public void setTipoNota(String tipoNota) {
-        this.tipoNota = tipoNota;
-    }
-
+    
+    
     public String getCodigoSeg() {
         return codigoSeg;
     }
@@ -38,25 +36,56 @@ public class Turno {//clase de turno. Describir sus atributos y funciones.
         this.codigoSeg = codigoSeg;
     }
 
-    public Usuario getAlum() {
-        return alum;
-    }
-
-    public void setAlum(Usuario alum) {
-        this.alum = alum;
-    }
-
-    public Fecha getFechaTurno() {
+    public LocalDateTime getFechaTurno() {
         return fechaTurno;
     }
 
-    public void setFechaTurno(Fecha fechaTurno) {
+    public void setFechaTurno(LocalDateTime fechaTurno) {
         this.fechaTurno = fechaTurno;
+    }
+
+    public int getIdDoc() {
+        return idDoc;
+    }
+
+    public void setIdDoc(int idDoc) {
+        this.idDoc = idDoc;
+    }
+
+    public int getIdAlum() {
+        return idAlum;
+    }
+
+    public void setIdAlum(int idAlum) {
+        this.idAlum = idAlum;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdInt() {
+        return idInt;
+    }
+
+    public void setIdInt(int idInt) {
+        this.idInt = idInt;
     }
 
     @Override
     public String toString() {
-        return "Turno{" + "fechaTurno=" + fechaTurno + ", tipoNota=" + tipoNota + ", codigoSeg=" + codigoSeg + ", alum=" + alum + '}';
+        return "Turno{" + "id=" + id + ", fechaTurno=" + fechaTurno + ", idDoc=" + idDoc + ", codigoSeg=" + codigoSeg + ", idAlum=" + idAlum + ", idInt=" + idInt + '}';
     }
+
+    
+    
+    
+
+    
       
 }

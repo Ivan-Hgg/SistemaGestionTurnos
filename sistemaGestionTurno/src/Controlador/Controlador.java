@@ -348,7 +348,7 @@ public static void llenarJTable(InterfazAdminVerTurnos v) {
     boolean filtrarPorFecha = !diaStr.isEmpty() && !mesStr.isEmpty() && !anioStr.isEmpty();
 
     for (Turno turno : turnos.getTurnos()) {
-        Fecha fecha = turno.getFechaTurno();
+        //Fecha fecha = turno.getFechaTurno();
 
         if (filtrarPorFecha) {
             try {
@@ -356,9 +356,9 @@ public static void llenarJTable(InterfazAdminVerTurnos v) {
                 int mes = Integer.parseInt(mesStr);
                 int anio = Integer.parseInt(anioStr);
 
-                if (fecha.getDia() != dia || fecha.getMes() != mes || fecha.getAnio() != anio) {
+               /* if (fecha.getDia() != dia || fecha.getMes() != mes || fecha.getAnio() != anio) {
                     continue; // no coincide la fecha
-                }
+                }*/
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(v, "⚠️ Fecha inválida. Asegúrese de que día, mes y año sean números.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -367,8 +367,8 @@ public static void llenarJTable(InterfazAdminVerTurnos v) {
 
         Object[] fila = {
             turno.getCodigoSeg(),
-            turno.getTipoNota(),
-            turno.getAlum().getLegajo(),
+            turno.getIdDoc(),
+            //turno.getAlum().getLegajo(),
             //turno.getAlum().getApeNom(),
         };
 
@@ -445,8 +445,8 @@ JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay 
     }
 
     String codigo = generarCodigoUnico();
-    Turno turno = new Turno(tipoGestion, codigo, fecha, u);
-    turnos.agregarTurnos(turno);
+    //Turno turno = new Turno(tipoGestion, codigo, fecha, u);
+    //turnos.agregarTurnos(turno);
     turnos.mostrar();
 
     String mensaje = "✅ Turno confirmado:\n\n"
