@@ -39,45 +39,7 @@ public class Controlador {
     //A futuro mejorar que se crean muchas instancias de las vistas para cerrar o abrir,  solucion: instanciar una vez aqui y llamar al objeto en cada lugar donde se crea la instancia
 
     
-    public static void inicio(){
-        Interfaz1 i= new Interfaz1 ();
-        i.setVisible(true);
-    }
     
-    
-    public static void IniciarSesion(Interfaz1 i){
-        
-        try {
-            int legajo= Integer.parseInt(i.getLegajoAlum().getText());
-            String contraseña =i.getContraseñaUsuario().getText();
-
-                
-            if(usuarios.buscarUsuario(contraseña,legajo) == true ){
-                JOptionPane.showMessageDialog(i, "Usuario encontrado", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
-                i.dispose();
-                if(usuarios.buscarTipoUsuario(legajo)==true){//es alumno?
-                    //abre la interfaz del turno del usuario, no se cual es
-                    GestionDeTurno g = new GestionDeTurno();
-                    g.setVisible(true);
-                    alumno.setLegajo(legajo);
-                }else{//abre la interfaz siguiente del admin
-                    InterfazAdmin2 vist = new InterfazAdmin2();vist.setVisible(true);//creo q esta era la interfaz del admin
-                }
-                
-            }else{
-                JOptionPane.showMessageDialog(i, "Usuario No Encontrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                i.getContraseñaUsuario().setText("");
-                i.getLegajoAlum().setText("");
-                
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(i, "Error en el Ingreso de Datos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            i.getContraseñaUsuario().setText("");
-            i.getLegajoAlum().setText("");
-        }
-        
-        
-    }
     /*
     public static void RegistroDatos(RegistroDatosAlumno i){//usado en RegistroDatosAlumno
         try {
@@ -458,7 +420,7 @@ JScrollPane scrollPane = new JScrollPane(tabla); // Para que tenga barra si hay 
     JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
 
     g.dispose(); 
-    inicio(); 
+    //inicio(); 
 }
 
     

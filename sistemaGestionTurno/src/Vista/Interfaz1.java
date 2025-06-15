@@ -140,13 +140,13 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void RegistroDatosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroDatosBotonActionPerformed
         // TODO add your handling code here:
-        ControladorInterfaz1.CrearUsuario(this);
+        ControladorInterfaz1.CrearUsuario();
     }//GEN-LAST:event_RegistroDatosBotonActionPerformed
 
     private void iniciarSesionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBotonActionPerformed
         //a los usuarios administradores se le asignara un legajo especial para que puedan iniciar sesion
         //desde la misma interfaz.
-        ControladorInterfaz1.IniciarSesion(this);
+        ControladorInterfaz1.IniciarSesion();
         
         
     }//GEN-LAST:event_iniciarSesionBotonActionPerformed

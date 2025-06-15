@@ -2,6 +2,7 @@
 package Vista;
 
 import Controlador.Controlador;
+import Controlador.ControladorInterfazMainAlumno;
 
 /**
  *
@@ -208,8 +209,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
     }//GEN-LAST:event_continuarActionPerformed
 
     private void cancelarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBotonActionPerformed
-        this.dispose();
-        Controlador.inicio();
+        ControladorInterfazMainAlumno.iniciarVentanaMA();
         
     }//GEN-LAST:event_cancelarBotonActionPerformed
 

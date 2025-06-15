@@ -6,6 +6,9 @@ package Modelo;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.sql.SQLIntegrityConstraintViolationException;
+import javax.swing.JOptionPane;
+
 
 public class BD {
     Connection c;
@@ -169,7 +172,7 @@ public class BD {
     }
     
     
-    public void agregarUsuario(Usuario u){//SI FUNCIONA
+    public boolean agregarUsuario(Usuario u){//SI FUNCIONA
         try {
             PreparedStatement s = c.prepareStatement("INSERT INTO usuario (APENOM, CORREO, LEGAJO, CONTR) values (?,?,?,?)");
             s.setString(1, u.getApeNom());
@@ -177,8 +180,21 @@ public class BD {
             s.setInt(3, u.getLegajo());
             s.setString(4, u.getContraseña());
             s.executeUpdate();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException ex){
+            String msg = ex.getMessage();
+
+            if (msg.contains("CORREO")) {
+                JOptionPane.showMessageDialog(null, "ERROR: El correo ya está registrado", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else if (msg.contains("LEGAJO")) {
+                JOptionPane.showMessageDialog(null, "ERROR: El legajo ya está registrado", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error de integridad: " + msg, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
     public void modificarContrUsuario(Usuario u){//SI FUNCIONA
@@ -256,8 +272,9 @@ public class BD {
     //ELIMINA PASANDOLE EL LEGAJO DEL OBJETO DIRECTAMENTE COMO PARAMETRO
     public void eliminarTurno(String codseg){//SI FUNCIONA
         try {
-            Statement s = c.createStatement();
-            s.executeUpdate("DELETE FROM turnos WHERE CODSEG="+codseg);
+            PreparedStatement s = c.prepareStatement("DELETE FROM turnos WHERE CODSEG = ?");
+            s.setString(1, codseg);
+            s.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -265,8 +282,9 @@ public class BD {
     //POLIMORFISMO DE ELIMINAR DOCUMENTO, SACANDO EL LEGAJO DESDE EL OBJETO
     public void eliminarTurno(Turno t){//SI FUNCIONA
         try {
-            Statement s = c.createStatement();
-            s.executeUpdate("DELETE FROM usuario WHERE CODSEG="+t.getCodigoSeg());
+            PreparedStatement s = c.prepareStatement("DELETE FROM turnos WHERE CODSEG = ?");
+            s.setString(1, t.getCodigoSeg());
+            s.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

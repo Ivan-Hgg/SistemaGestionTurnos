@@ -24,9 +24,13 @@ public class SistemaGestionTurno {
      */
     public static void main(String[] args) {
         // TODO code application logic here;
+        ControladorInterfaz1.iniciarVentanaI1();
+        
+        
+        /*
         BD b = new BD();
-        Turno t=new Turno(0, LocalDateTime.of(204, 8, 15, 9, 0), 1, "d", 4, 4);
-        b.agregarTurno(t);
+        Turno t=new Turno(0, LocalDateTime.of(204, 8, 15, 9, 0), 1, "5d", 4, 4);
+        b.eliminarTurno(t);
         
         /*PRUEBAS DED USUARIO
         Usuario u= new Usuario("alu@", 58369, "PELO", "JAJA");
