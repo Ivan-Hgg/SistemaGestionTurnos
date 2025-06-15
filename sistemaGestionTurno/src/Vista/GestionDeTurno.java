@@ -2,6 +2,7 @@
 package Vista;
 
 import Controlador.Controlador;
+import Controlador.ControladorGestionDeTurno;
 import Controlador.ControladorInterfazMainAlumno;
 
 /**
@@ -201,11 +202,11 @@ public class GestionDeTurno extends javax.swing.JFrame {
 
     private void agregarDocumentosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDocumentosBotonActionPerformed
 
-        Controlador.AgregarDocumentos(this);
+        ControladorGestionDeTurno.cerrarGTAbrirAD();
     }//GEN-LAST:event_agregarDocumentosBotonActionPerformed
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        Controlador.ConfirmarTurno(this);
+        ControladorGestionDeTurno.ConfirmarTurno();
     }//GEN-LAST:event_continuarActionPerformed
 
     private void cancelarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBotonActionPerformed

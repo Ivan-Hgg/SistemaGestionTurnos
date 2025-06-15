@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.Controlador;
+import Controlador.ControladorInterfazAdmin2;
+import Controlador.ControladorInterfazAdminConfig;
 //sadasd
 /**
  *
@@ -88,13 +90,13 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Controlador.interfazAdminVerTurnos(this);
+        ControladorInterfazAdmin2.cerrarIa2AbrirIavt();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Controlador.interfazAdminConfig(this);
+        ControladorInterfazAdmin2.cerrarIa2AbrirIac();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

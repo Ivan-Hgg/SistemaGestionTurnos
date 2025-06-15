@@ -16,4 +16,12 @@ public class ControladorInterfazMainAlumno {
     public static void iniciarVentanaMA(){
         i.setVisible(true);
     }
+    public static void cerrarMAAbrirGT(){
+        i.dispose();
+        ControladorGestionDeTurno.iniciarGT();
+    }
+    
+    
+    
+    
 }

@@ -110,15 +110,28 @@ public class BD {
         return ints;
     }
     
-    public void agregarIntervalo(Intervalo I){//SI FUNCIONA
+    public boolean agregarIntervalo(Intervalo I){//SI FUNCIONA
         try {
             PreparedStatement s = c.prepareStatement("INSERT INTO intervalo (FECHING, FECHFIN, nombre) values (?,?,?)");
             s.setObject(1, I.getFechaIng());
             s.setObject(2, I.getFechaOut());
             s.setObject(3, I.getNombre());
             s.executeUpdate();
-        } catch (Exception e) {
+            return true;
+        } catch (SQLIntegrityConstraintViolationException ex){
+            String msg = ex.getMessage();
+
+            if (msg.contains("FECHING")) {
+                JOptionPane.showMessageDialog(null, "ERROR: la fecha de inicio ya esta asignada a un intervalo", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else if (msg.contains("FECHFIN")) {
+                JOptionPane.showMessageDialog(null, "ERROR: la fecha final ya fue asignada por otro intervalo", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error de integridad: " + msg, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
         
@@ -231,7 +244,7 @@ public class BD {
         ArrayList<Turno> turs = new ArrayList<>();
         try {
             Statement s = c.createStatement();
-            ResultSet res= s.executeQuery("SELECT * FROM turnos");
+            ResultSet res= s.executeQuery("SELECT * FROM turnos ORDER BY FECHTUR ASC");
             while(res.next()){
                 int idT = res.getInt("idTURNOS");
                 int idI= res.getInt("idINTERVALO");
@@ -254,7 +267,7 @@ public class BD {
     }
     
     
-    public void agregarTurno(Turno t){//SI FUNCIONA
+    public boolean agregarTurno(Turno t){//SI FUNCIONA
         try {
             PreparedStatement s = c.prepareStatement("INSERT INTO turnos (idINTERVALO, idUSUARIO, idDOCUMENTOS, CODSEG, FECHTUR) values (?,?,?,?,?)");
             s.setInt(1, t.getIdInt());
@@ -264,8 +277,21 @@ public class BD {
             s.setObject(5, t.getFechaTurno());
             
             s.executeUpdate();
-        } catch (Exception e) {
+            return true;
+        }catch (SQLIntegrityConstraintViolationException ex){
+            String msg = ex.getMessage();
+
+            if (msg.contains("CODSEG")) {
+                JOptionPane.showMessageDialog(null, "ERROR: el codigo de seguridad fue mal generado", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else if (msg.contains("FECHTUR")) {
+                JOptionPane.showMessageDialog(null, "ERROR: la fecha ya está ocupada", "Duplicado", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error de integridad: " + msg, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
     }
     

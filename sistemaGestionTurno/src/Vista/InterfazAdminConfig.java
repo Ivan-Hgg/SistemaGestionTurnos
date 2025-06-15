@@ -4,6 +4,7 @@
  */
 package Vista;
 import Controlador.Controlador;
+import Controlador.ControladorInterfazAdminConfig;
 import javax.swing.JOptionPane;
 //sadasd
 /**
@@ -204,11 +205,11 @@ public class InterfazAdminConfig extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Controlador.regresarInterfazAdminConfig(this);
+        ControladorInterfazAdminConfig.cerrarIacAbrirIa2();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controlador.mensajeConfirmacionInt(this);
+        ControladorInterfazAdminConfig.mensajeConfirmacionInt();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

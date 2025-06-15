@@ -2,6 +2,7 @@
 package Vista;
 
 import Controlador.Controlador;
+import Controlador.ControladorAgregarDocumentos;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -53,7 +54,7 @@ public class AgregarDocumentos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-      Controlador.SeleccionDeArchivo(this, evt);
+        ControladorAgregarDocumentos.SeleccionDeArchivo(this, evt);
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**

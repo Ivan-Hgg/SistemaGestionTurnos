@@ -42,8 +42,6 @@ public class ControladorRegistroDatosAlumno {
             String contraseña =i.getContraseña().getText();
             String apeNom = i.getApeNomAlum().getText();
             
-            
-            
             //SECCION CORREO INSTITUCIONAL
             //para corroborar el mail institucional solo debo corroborar los ultimos 18 caracteres
             //que guarde la cadena hasta que encuentre el @ para ver si es igual a "alu.frt.utn.edu.ar"
@@ -61,21 +59,6 @@ public class ControladorRegistroDatosAlumno {
                 bandera=true;
                 JOptionPane.showMessageDialog(i, "Correo no valido", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
             }
-            /*comprueba que no se repita el correo 
-            if(usuarios.buscarCorreo(correo) == true){
-                JOptionPane.showMessageDialog(i, "Correo ya registrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                bandera=true;
-            }*/
-            
-            
-            /*SECCION LEGAJO, QUE NO SE REPITAN 
-            if(usuarios.buscarLegajo(legajo) == true){
-                JOptionPane.showMessageDialog(i, "Legajo ya registrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                bandera=true;
-            }*/
-            
-            
-            
             //SECCION MENSAJE DE ERROR
             if(bandera==false){
                 //registra los datos en una instancia y lo almacena en arraylist

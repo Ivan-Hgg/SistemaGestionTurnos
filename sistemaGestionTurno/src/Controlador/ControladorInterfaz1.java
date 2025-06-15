@@ -45,7 +45,10 @@ public class ControladorInterfaz1 {
         }
         return r;
     }
-    
+    private static void limpiarCampos(){
+        i1.getContraseñaUsuario().setText("");
+        i1.getLegajoAlum().setText("");
+    }
     
     public static void IniciarSesion(){
         try {
@@ -57,24 +60,19 @@ public class ControladorInterfaz1 {
                 JOptionPane.showMessageDialog(i1, "Usuario encontrado", "Mensaje de Confirmacion", JOptionPane.INFORMATION_MESSAGE);
                 i1.dispose();
                 if(buscarTipoUsuario(legajo)==true){//es alumno?
-                    //abre la interfaz del turno del usuario, no se cual es
-                    GestionDeTurno g = new GestionDeTurno();
-                    g.setVisible(true);
-                    //alumno.setLegajo(legajo);
+                    ControladorInterfazMainAlumno.iniciarVentanaMA();
                 }else{//abre la interfaz siguiente del admin
-                    InterfazAdmin2 vist = new InterfazAdmin2();vist.setVisible(true);//creo q esta era la interfaz del admin
+                    ControladorInterfazAdmin2.iniciarIa2();
                 }
                 
             }else{
                 JOptionPane.showMessageDialog(i1, "Usuario No Encontrado", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-                i1.getContraseñaUsuario().setText("");
-                i1.getLegajoAlum().setText("");
+                limpiarCampos();
                 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(i1, "Error en el Ingreso de Datos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
-            i1.getContraseñaUsuario().setText("");
-            i1.getLegajoAlum().setText("");
+            limpiarCampos();
         }
     }
     

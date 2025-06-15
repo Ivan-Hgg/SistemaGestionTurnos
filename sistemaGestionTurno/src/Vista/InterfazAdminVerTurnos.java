@@ -10,6 +10,7 @@ package Vista;
  * @author carli
  */
 import Controlador.Controlador;
+import Controlador.ControladorInterfazAdminVerTurnos;
 import javax.swing.JTextField;
 public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
@@ -182,7 +183,7 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
 
-      Controlador.regresarInterfazAdminVerTurnos(this);
+      //Controlador.regresarInterfazAdminVerTurnos(this);
     }//GEN-LAST:event_RegresarActionPerformed
 
     private void SDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SDiaActionPerformed
@@ -194,12 +195,12 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
     }//GEN-LAST:event_SMesActionPerformed
 
     private void Regresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar1ActionPerformed
-        Controlador.regresarInterfazAdminVerTurnos(this);
+        ControladorInterfazAdminVerTurnos.cerrarIavtAbrirIa2();
     }//GEN-LAST:event_Regresar1ActionPerformed
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
-     Controlador.validarFechaSeleccionada(this);
-     Controlador.llenarJTable(this);
+     ControladorInterfazAdminVerTurnos.validarFechaSeleccionada();
+     ControladorInterfazAdminVerTurnos.llenarJTable();
 
     }//GEN-LAST:event_SeleccionarActionPerformed
 
