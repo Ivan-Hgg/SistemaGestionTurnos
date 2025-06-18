@@ -267,7 +267,7 @@ public class BD {
     }
     
     
-    public boolean agregarTurno(Turno t){//SI FUNCIONA
+    public boolean agregarTurno(Turno t, String ruta){//la ruta es para acceder al archivo y subirlo a la BD
         try {
             PreparedStatement s = c.prepareStatement("INSERT INTO turnos (idINTERVALO, idUSUARIO, idDOCUMENTOS, CODSEG, FECHTUR) values (?,?,?,?,?)");
             s.setInt(1, t.getIdInt());

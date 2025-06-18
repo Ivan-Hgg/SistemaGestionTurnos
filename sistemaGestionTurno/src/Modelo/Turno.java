@@ -26,6 +26,16 @@ public class Turno {//clase de turno. Describir sus atributos y funciones.
         this.idInt = idInt;
     }
 
+    public Turno(LocalDateTime fechaTurno, int idDoc, String codigoSeg, int idAlum, int idInt) {
+        this.fechaTurno = fechaTurno;
+        this.idDoc = idDoc;
+        this.codigoSeg = codigoSeg;
+        this.idAlum = idAlum;
+        this.idInt = idInt;
+    }
+    
+    
+
     
     
     public String getCodigoSeg() {

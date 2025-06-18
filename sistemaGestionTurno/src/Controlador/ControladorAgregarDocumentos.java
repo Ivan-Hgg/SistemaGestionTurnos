@@ -23,22 +23,30 @@ public class ControladorAgregarDocumentos {
     public static void iniciarAD(){
         a.setVisible(true);
     }
-    public static void SeleccionDeArchivo(JFrame ventanaActual, ActionEvent evt) {
+    public static void cerrarADAbrirGT(){
+        a.dispose();
+        ControladorGestionDeTurno.iniciarGT();
+    }
+    
+    public static String SeleccionDeArchivo(JFrame ventanaActual, ActionEvent evt) {
         JFileChooser chooser = (JFileChooser) evt.getSource();
 
         if (evt.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)) {
             File archivo = chooser.getSelectedFile();
-            System.out.println("Archivo seleccionado: " + archivo.getAbsolutePath());
-
-            ventanaActual.dispose();  // Cerramos la ventana actual
-
-            // Si querés pasar el archivo, usá un constructor personalizado:
+            System.out.println("Archivo seleccionado: " + archivo.getAbsolutePath());            
+            cerrarADAbrirGT();  // Cerramos la ventana actual
+            
+            return archivo.getAbsolutePath();
+              
+            /* Si querés pasar el archivo, usá un constructor personalizado:
             GestionDeTurno siguientePantalla = new GestionDeTurno(); 
             siguientePantalla.setVisible(true);
-
+*/
         } else if (evt.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
             ventanaActual.dispose();  // Cerramos la ventana actual
             new GestionDeTurno().setVisible(true);
+            return "";
         }
+        return"";
     }
 }

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class ControladorGestionDeTurno {
     static GestionDeTurno g = new GestionDeTurno();
     static BD b = new BD();
-
+    static String ruta;
     public static void iniciarGT(){
         g.setVisible(true);
     }
@@ -30,6 +30,11 @@ public class ControladorGestionDeTurno {
         g.dispose();
         ControladorAgregarDocumentos.iniciarAD();
     }
+    public static void obtenerRutaDocumento(String t){
+        ruta=t;//esto es para tener la ruta de los documentos y pasarlo a BD para subirlo a la base de datos
+    }
+    
+    
     
     
     
@@ -38,7 +43,7 @@ public class ControladorGestionDeTurno {
         String fechaTexto = g.getComboFecha().getSelectedItem().toString();
 
     //HACE FALTA CORREGIR PARA QUE CUMPLA CON LOS ATRIBUTOS ACTUALES DEL TURNO
-        // Convertir texto a fecha 
+        // Convertir texto a fecha
         int dia = Integer.parseInt(fechaTexto.split(" ")[0]);
         int mes = 4; // fijo porque es abril
         int anio = 2025;
@@ -46,22 +51,11 @@ public class ControladorGestionDeTurno {
         // Asignar horario automático (
         int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
         int min = Math.random() < 0.5 ? 0 : 30;
+        LocalDateTime fechaTurno = LocalDateTime.of(anio, mes, dia, hora, min);
         
-/*      SOLUCIONEN ESTO QUE YA NO USAMOS LA FECHA ASI
-        Fecha fecha = new Fecha(dia, mes, anio, hora, min);
-*/
-
-        /* NO SE NECESITA YA QUE LA COMPROBACION ES EN EL INICIO DE SESION - BORRAR ESTO SI COINCIDEN
-        Simular usuario logueado 
-        Usuario u = usuarios.buscarUsuarioPorLegajo(alumno.getLegajo());
-        if (u == null) {
-            JOptionPane.showMessageDialog(g, "No se encontró el usuario actual", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }*/
-
         String codigo = generarCodigoUnico();
-        Turno turno = new Turno(min, LocalDateTime.MIN, anio, codigo, anio, min);//CORREGIR LOS CAMPOS
-        boolean exito = b.agregarTurno(turno);
+        Turno turno = new Turno(/*fechaTurno, idDoc, codigo, idAlum, min*/);//CORREGIR LOS CAMPOS
+        boolean exito = b.agregarTurno(turno, ruta);
         if(exito){
             String mensaje = "✅ Turno confirmado:\n\n"
                        + "📄 Tipo de gestión: " + tipoGestion + "\n"
