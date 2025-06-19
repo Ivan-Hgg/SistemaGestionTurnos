@@ -4,9 +4,8 @@
  */
 package Vista;
 
-import Controlador.Controlador;
+import Controlador.ControladorGestionDoc;
 import Controlador.ControladorInterfazAdmin2;
-import Controlador.ControladorInterfazAdminConfig;
 //sadasd
 /**
  *
@@ -33,6 +32,7 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        botonAgregarDocumento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +42,7 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ver turnos agendados");
+        jButton1.setText("Ver Turnos Agendados");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -50,10 +50,20 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("configurar intervalo");
+        jButton2.setText("Configurar Intervalo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        botonAgregarDocumento.setBackground(new java.awt.Color(0, 0, 102));
+        botonAgregarDocumento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonAgregarDocumento.setForeground(new java.awt.Color(255, 255, 255));
+        botonAgregarDocumento.setText("Gestión de Documento");
+        botonAgregarDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarDocumentoActionPerformed(evt);
             }
         });
 
@@ -64,21 +74,24 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAgregarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
+                .addComponent(botonAgregarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,14 +103,19 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ControladorInterfazAdmin2.cerrarIa2AbrirIavt();
+        ControladorInterfazAdmin2.cerrarIa2AbrirIAdmVerTur();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ControladorInterfazAdmin2.cerrarIa2AbrirIac();
+        ControladorInterfazAdmin2.cerrarIa2AbrirIAdmInter();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botonAgregarDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarDocumentoActionPerformed
+        // TODO add your handling code here:
+        ControladorInterfazAdmin2.cerrarIa2AbrirGestDocs();
+    }//GEN-LAST:event_botonAgregarDocumentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +154,7 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregarDocumento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

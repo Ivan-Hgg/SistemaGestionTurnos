@@ -2,16 +2,16 @@
 package Vista;
 
 import Controlador.Controlador;
-import Controlador.ControladorAgregarDocumentos;
+import Controlador.ControladorAgregarPDF;
 import java.io.File;
 import javax.swing.JFileChooser;
 
-public class AgregarDocumentos extends javax.swing.JFrame {
+public class AgregarPDF extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarDocumentos
      */
-    public AgregarDocumentos() {
+    public AgregarPDF() {
         initComponents();
     }
 
@@ -54,7 +54,7 @@ public class AgregarDocumentos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        ControladorAgregarDocumentos.SeleccionDeArchivo(this, evt);
+        ControladorAgregarPDF.SeleccionDeArchivo(this, evt);
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
@@ -74,20 +74,21 @@ public class AgregarDocumentos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarDocumentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarDocumentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarDocumentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarDocumentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPDF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarDocumentos().setVisible(true);
+                new AgregarPDF().setVisible(true);
             }
         });
     }

@@ -5,7 +5,7 @@
 package Controlador;
 
 import Modelo.BD;
-import Vista.AgregarDocumentos;
+import Vista.AgregarPDF;
 import Vista.GestionDeTurno;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -16,14 +16,14 @@ import javax.swing.JFrame;
  *
  * @author User
  */
-public class ControladorAgregarDocumentos {
-    static AgregarDocumentos a= new AgregarDocumentos();
+public class ControladorAgregarPDF {
+    static AgregarPDF a= new AgregarPDF();
     static BD b = new BD();
     
-    public static void iniciarAD(){
+    public static void iniciarAPDF(){
         a.setVisible(true);
     }
-    public static void cerrarADAbrirGT(){
+    public static void cerrarAPDFAbrirGT(){
         a.dispose();
         ControladorGestionDeTurno.iniciarGT();
     }
@@ -34,7 +34,7 @@ public class ControladorAgregarDocumentos {
         if (evt.getActionCommand().equals(JFileChooser.APPROVE_SELECTION)) {
             File archivo = chooser.getSelectedFile();
             System.out.println("Archivo seleccionado: " + archivo.getAbsolutePath());            
-            cerrarADAbrirGT();  // Cerramos la ventana actual
+            cerrarAPDFAbrirGT();  // Cerramos la ventana actual
             
             return archivo.getAbsolutePath();
               

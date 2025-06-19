@@ -28,7 +28,7 @@ public class ControladorGestionDeTurno {
     }
     public static void cerrarGTAbrirAD(){
         g.dispose();
-        ControladorAgregarDocumentos.iniciarAD();
+        ControladorAgregarPDF.iniciarAPDF();
     }
     public static void obtenerRutaDocumento(String t){
         ruta=t;//esto es para tener la ruta de los documentos y pasarlo a BD para subirlo a la base de datos

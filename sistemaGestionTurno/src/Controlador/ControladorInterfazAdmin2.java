@@ -18,13 +18,17 @@ public class ControladorInterfazAdmin2 {
     public static void iniciarIa2(){
         ia2.setVisible(true);
     }
-    public static void cerrarIa2AbrirIac(){
+    public static void cerrarIa2AbrirIAdmInter(){
         ia2.dispose();
-        ControladorInterfazAdminConfig.iniciarIAc();
+        ControladorAdminIntervalo.iniciarAdminInter();
     }
-    public static void cerrarIa2AbrirIavt(){
+    public static void cerrarIa2AbrirIAdmVerTur(){
         ia2.dispose();
         ControladorInterfazAdminVerTurnos.iniciarIavt();
+    }
+    public static void cerrarIa2AbrirGestDocs(){
+        ia2.dispose();
+        ControladorGestionDoc.iniciarGestionDoc();
     }
     
 }
