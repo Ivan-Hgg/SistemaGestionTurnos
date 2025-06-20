@@ -58,6 +58,18 @@ public class BD {
         }
         
     }
+    public String obtenerNOMBREDocumento(int id){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT DOCNOM FROM documentos WHERE idDOCUMENTOS='" + id +"'");
+            res.next();
+            return res.getString("DOCNOM");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "Error";
+        }
+        
+    }
     
     
     public void agregarDocumento(Documento d){//SI FUNCIONA
@@ -195,6 +207,8 @@ public class BD {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR: No se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+
         }
         return usu;
     }
@@ -211,8 +225,19 @@ public class BD {
         }
         
     }
-
     
+    public String obtenerAPENOMUsuario(int legajo){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT APENOM FROM usuario WHERE legajo='" + legajo +"'");
+            res.next();
+            return res.getString("APENOM");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "Error";
+        }
+        
+    }
     
     public boolean agregarUsuario(Usuario u){//SI FUNCIONA
         try {
@@ -278,7 +303,7 @@ public class BD {
                 int idT = res.getInt("idTURNOS");
                 int idI= res.getInt("idINTERVALO");
                 int idU= res.getInt("idUSUARIO");
-                int idD= res.getInt("idDOCUMENTO");
+                int idD= res.getInt("idDOCUMENTOS");
                 String codseg= res.getString("CODSEG");
 
                 // Convertir correctamente
@@ -348,39 +373,71 @@ public class BD {
         }
     }
     
+    //Consultas distintas -------------------------------------------------------------------------------
+    
     //esto es para recuperar el PDF de la BD y almacenarlo para verlo
     public void recuperarPdf(int idTurno, String destino) {
-    String sql = "SELECT PDF FROM turnos WHERE idTurnos = ?";
-    try (PreparedStatement ps = c.prepareStatement(sql)) {
-        ps.setInt(1, idTurno);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            InputStream input = rs.getBinaryStream("PDF");
-            FileOutputStream output = new FileOutputStream(destino);
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = input.read(buffer)) != -1) {
-                output.write(buffer, 0, bytesRead);
-            }
-            output.close();
-            input.close();
-            System.out.println("Archivo guardado en: " + destino);
+        String sql = "SELECT PDF FROM turnos WHERE idTurnos = ?";
+        try (PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1, idTurno);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                InputStream input = rs.getBinaryStream("PDF");
+                FileOutputStream output = new FileOutputStream(destino);
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = input.read(buffer)) != -1) {
+                    output.write(buffer, 0, bytesRead);
+                }
+                output.close();
+                input.close();
+                System.out.println("Archivo guardado en: " + destino);
 
-            // Abrir el PDF automáticamente después de guardarlo
-            File pdf = new File(destino);
-            if (pdf.exists()) {
-                // Opción 1: Abrir con visor predeterminado
-                java.awt.Desktop.getDesktop().open(pdf);
+                // Abrir el PDF automáticamente después de guardarlo
+                File pdf = new File(destino);
+                if (pdf.exists()) {
+                    // Opción 1: Abrir con visor predeterminado
+                    java.awt.Desktop.getDesktop().open(pdf);
+                }
+            } else {
+                System.out.println("No se encontró el turno con ese ID.");
+                JOptionPane.showMessageDialog(null, "ERROR: No se encontró el turno con ese ID.", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
-        } else {
-            System.out.println("No se encontró el turno con ese ID.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR Recuperando el Archivo", "Error", JOptionPane.ERROR_MESSAGE);
+
         }
-    } catch (Exception e) {
-        e.printStackTrace();
+    }  
+    
+    public ArrayList<Turno> obtenerTurnosDeAlumno(int legajo){//SI FUNCIONA
+        ArrayList<Turno> turs = new ArrayList<>();
+        try {
+            int id=obtenerIDUsuario(legajo);
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT * FROM turnos WHERE idUSUARIO= "+ id +" ORDER BY FECHTUR ASC");
+            while(res.next()){
+                int idT = res.getInt("idTURNOS");
+                int idI= res.getInt("idINTERVALO");
+                int idU= res.getInt("idUSUARIO");
+                int idD= res.getInt("idDOCUMENTOS");
+                String codseg= res.getString("CODSEG");
+
+                // Convertir correctamente
+                Timestamp tsIng = res.getTimestamp("FECHTUR");
+
+                LocalDateTime fechaTur = tsIng != null ? tsIng.toLocalDateTime() : null;
+
+                Turno tur = new Turno(idT, fechaTur, idD, codseg, idU, idI);
+                turs.add(tur);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR: no se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return turs;
     }
-}
-    
-    
     
     
     
