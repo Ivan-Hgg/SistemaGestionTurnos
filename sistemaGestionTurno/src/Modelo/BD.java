@@ -43,6 +43,17 @@ public class BD {
         }
         return docs;
     }
+    public int obtenerIDDocumentos(String nom){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT idDOCUMENTOS FROM documentos WHERE DOCNOM='" + nom +"'");
+            return res.getInt("idDOCUMENTOS");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        
+    }
     
     
     public void agregarDocumento(Documento d){//SI FUNCIONA
@@ -183,6 +194,19 @@ public class BD {
         }
         return usu;
     }
+    
+    public int obtenerIDUsuario(int legajo){//SI FUNCIONA
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT idUSUARIO FROM usuario WHERE legajo='" + legajo +"'");
+            return res.getInt("idUSUARIO");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        
+    }
+
     
     
     public boolean agregarUsuario(Usuario u){//SI FUNCIONA

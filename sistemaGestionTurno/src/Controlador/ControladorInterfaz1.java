@@ -50,6 +50,12 @@ public class ControladorInterfaz1 {
         i1.getLegajoAlum().setText("");
     }
     
+    public static int retornarIdUsuario(){
+        int legajo= Integer.parseInt(i1.getLegajoAlum().getText());
+        return b.obtenerIDUsuario(legajo);
+        
+    }
+    
     public static void IniciarSesion(){
         try {
             int legajo= Integer.parseInt(i1.getLegajoAlum().getText());

@@ -42,7 +42,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agregar documentos al intervalo");
 
-        jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setText("Documentos que se pueden presentar en el intervalo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -58,7 +58,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel2.setText("Documentos disponibles para agregar:");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -74,21 +74,26 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel3.setText("Documentos ya agregados al intervalo :");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setText("Ingrese el identificador");
 
         TFIdDocumento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        TFIdDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFIdDocumentoActionPerformed(evt);
+            }
+        });
 
         btEliminar.setBackground(new java.awt.Color(0, 0, 102));
-        btEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btEliminar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btEliminar.setText("Eliminar");
 
         btCancelar.setBackground(new java.awt.Color(0, 0, 102));
-        btCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btCancelar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +103,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         });
 
         btAgregar.setBackground(new java.awt.Color(0, 0, 102));
-        btAgregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btAgregar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btAgregar.setText("Agregar");
 
@@ -126,7 +131,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(TFIdDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btAgregar)
@@ -155,7 +160,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
                     .addComponent(TFIdDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btEliminar)
                     .addComponent(btAgregar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btCancelar)
                 .addContainerGap())
         );
@@ -167,6 +172,10 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         // TODO add your handling code here:
         Controlador.ControladorInterfazAgregarDocIntervalo.cerrarIADIabrirIAI();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void TFIdDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIdDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFIdDocumentoActionPerformed
 
     /**
      * @param args the command line arguments

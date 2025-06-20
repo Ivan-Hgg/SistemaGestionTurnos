@@ -37,11 +37,7 @@ public class ControladorAgregarPDF {
             cerrarAPDFAbrirGT();  // Cerramos la ventana actual
             
             return archivo.getAbsolutePath();
-              
-            /* Si querés pasar el archivo, usá un constructor personalizado:
-            GestionDeTurno siguientePantalla = new GestionDeTurno(); 
-            siguientePantalla.setVisible(true);
-*/
+            
         } else if (evt.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
             ventanaActual.dispose();  // Cerramos la ventana actual
             new GestionDeTurno().setVisible(true);

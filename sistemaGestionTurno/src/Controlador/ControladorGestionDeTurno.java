@@ -37,39 +37,49 @@ public class ControladorGestionDeTurno {
     
     
     
-    
+    //FALTA RESOLVER QUE GUARDE EL ID DEL INTERVALO CORREGIR
     public static void ConfirmarTurno() {
         String tipoGestion = g.getComboTipoGestion().getSelectedItem().toString();
         String fechaTexto = g.getComboFecha().getSelectedItem().toString();
 
-    //HACE FALTA CORREGIR PARA QUE CUMPLA CON LOS ATRIBUTOS ACTUALES DEL TURNO
-        // Convertir texto a fecha
+        //CORREGIR QUE OBTENGA LA FECHA DEL TURNO QUE SELECCIONO, NO ES ALGO QUE DEJEMOS FIJO
         int dia = Integer.parseInt(fechaTexto.split(" ")[0]);
-        int mes = 4; // fijo porque es abril
-        int anio = 2025;
+        int mes = 4; //CORREGIR
+        int anio = 2025;//CORREGIR
 
-        // Asignar horario automático (
+        // Asignar horario automático / CORREGIR QUE SEA 5 MINUTOS LUEGO DEL ANTERIOR TURNO
+        //tener en cuenta que NO TRABAJAN TODO EL DIA por lo que los horarios son de la joranada que tengan
+        //eso quedara medio pendiente y lo podemos dejar para el final
         int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
         int min = Math.random() < 0.5 ? 0 : 30;
         LocalDateTime fechaTurno = LocalDateTime.of(anio, mes, dia, hora, min);
         
         String codigo = generarCodigoUnico();
-        Turno turno = new Turno(/*fechaTurno, idDoc, codigo, idAlum, min*/);//CORREGIR LOS CAMPOS
-        boolean exito = b.agregarTurno(turno, ruta);
-        if(exito){
-            String mensaje = "✅ Turno confirmado:\n\n"
-                       + "📄 Tipo de gestión: " + tipoGestion + "\n"
-                       + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
-                       + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
-                       + "🔐 Código: " + codigo;
+        int idDoc=b.obtenerIDDocumentos(tipoGestion);
+        if(idDoc!=0){
+            int idAlum=ControladorInterfaz1.retornarIdUsuario();
+            if(idAlum!=0){
+                Turno turno = new Turno(fechaTurno, idDoc, codigo, idAlum, 1);//CORREGIR LOS CAMPOS
+                boolean exito = b.agregarTurno(turno, ruta);
+                if(exito){
+                    String mensaje = "✅ Turno confirmado:\n\n"
+                               + "📄 Tipo de gestión: " + tipoGestion + "\n"
+                               + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
+                               + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
+                               + "🔐 Código: " + codigo;
 
-            JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
 
-            g.dispose(); 
-            cerrarGTAbrirMA();
-        }else{
-            //hay error se debrian limpiar los campos.
+                    g.dispose(); 
+                    cerrarGTAbrirMA();
+                }else{
+                    //hay error se debrian limpiar los campos.
+                }
+                //
+            }
+            //
         }
+        
 
 }
 

@@ -44,7 +44,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Datos Alumno");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel1.setText("Registro de datos");
 
         apeNomAlum.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +53,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setText("Apellido y Nombre");
 
         legajoAlum.addActionListener(new java.awt.event.ActionListener() {
@@ -62,11 +62,11 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel3.setText("Legajo");
 
         continuar.setBackground(new java.awt.Color(0, 0, 102));
-        continuar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        continuar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         continuar.setForeground(new java.awt.Color(255, 255, 255));
         continuar.setText("Continuar");
         continuar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +81,10 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setText("Contraseña");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel6.setText("Correo Institucional");
 
         correoAlum.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
         });
 
         continuar1.setBackground(new java.awt.Color(0, 0, 102));
-        continuar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        continuar1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         continuar1.setForeground(new java.awt.Color(255, 255, 255));
         continuar1.setText("Regresar");
         continuar1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
                                         .addComponent(apeNomAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(correoAlum, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(Contraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +161,7 @@ public class RegistroDatosAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(continuar1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
