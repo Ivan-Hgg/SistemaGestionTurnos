@@ -24,7 +24,10 @@ public class SistemaGestionTurno {
      */
     public static void main(String[] args) {
         // TODO code application logic here;
-        ControladorInterfaz1.iniciarVentanaI1();
+        //ControladorInterfaz1.iniciarVentanaI1();
+        //PRUEBA DE RECUPERACION DE PDF
+        BD b = new BD();
+        b.recuperarPdf(13, "salida.pdf");
         
         
         /*

@@ -19,6 +19,7 @@ public class ControladorGestionDeTurno {
     static GestionDeTurno g = new GestionDeTurno();
     static BD b = new BD();
     static String ruta;
+    
     public static void iniciarGT(){
         g.setVisible(true);
     }
@@ -31,7 +32,7 @@ public class ControladorGestionDeTurno {
         ControladorAgregarPDF.iniciarAPDF();
     }
     public static void obtenerRutaDocumento(String t){
-        ruta=t;//esto es para tener la ruta de los documentos y pasarlo a BD para subirlo a la base de datos
+        ruta= t;//esto es para tener la ruta de los documentos y pasarlo a BD para subirlo a la base de datos
     }
     
     
@@ -56,6 +57,7 @@ public class ControladorGestionDeTurno {
         
         String codigo = generarCodigoUnico();
         int idDoc=b.obtenerIDDocumentos(tipoGestion);
+        
         if(idDoc!=0){
             int idAlum=ControladorInterfaz1.retornarIdUsuario();
             if(idAlum!=0){

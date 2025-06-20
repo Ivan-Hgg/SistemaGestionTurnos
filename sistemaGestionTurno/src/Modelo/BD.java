@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.*;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -47,6 +50,7 @@ public class BD {
         try {
             Statement s = c.createStatement();
             ResultSet res= s.executeQuery("SELECT idDOCUMENTOS FROM documentos WHERE DOCNOM='" + nom +"'");
+            res.next();
             return res.getInt("idDOCUMENTOS");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -199,6 +203,7 @@ public class BD {
         try {
             Statement s = c.createStatement();
             ResultSet res= s.executeQuery("SELECT idUSUARIO FROM usuario WHERE legajo='" + legajo +"'");
+            res.next();
             return res.getInt("idUSUARIO");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -293,14 +298,17 @@ public class BD {
     
     public boolean agregarTurno(Turno t, String ruta){//la ruta es para acceder al archivo y subirlo a la BD
         try {
-            PreparedStatement s = c.prepareStatement("INSERT INTO turnos (idINTERVALO, idUSUARIO, idDOCUMENTOS, CODSEG, FECHTUR) values (?,?,?,?,?)");
+            PreparedStatement s = c.prepareStatement("INSERT INTO turnos (idINTERVALO, idUSUARIO, idDOCUMENTOS, CODSEG, FECHTUR, PDF) values (?,?,?,?,?,?)");
+            FileInputStream input = new FileInputStream(new File(ruta));
             s.setInt(1, t.getIdInt());
             s.setInt(2, t.getIdAlum());
             s.setInt(3, t.getIdDoc());
             s.setString(4, t.getCodigoSeg());
             s.setObject(5, t.getFechaTurno());
-            
+            s.setBinaryStream(6, input, new File(ruta).length());
+
             s.executeUpdate();
+            input.close();
             return true;
         }catch (SQLIntegrityConstraintViolationException ex){
             String msg = ex.getMessage();
@@ -340,6 +348,37 @@ public class BD {
         }
     }
     
+    //esto es para recuperar el PDF de la BD y almacenarlo para verlo
+    public void recuperarPdf(int idTurno, String destino) {
+    String sql = "SELECT PDF FROM turnos WHERE idTurnos = ?";
+    try (PreparedStatement ps = c.prepareStatement(sql)) {
+        ps.setInt(1, idTurno);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            InputStream input = rs.getBinaryStream("PDF");
+            FileOutputStream output = new FileOutputStream(destino);
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = input.read(buffer)) != -1) {
+                output.write(buffer, 0, bytesRead);
+            }
+            output.close();
+            input.close();
+            System.out.println("Archivo guardado en: " + destino);
+
+            // Abrir el PDF automáticamente después de guardarlo
+            File pdf = new File(destino);
+            if (pdf.exists()) {
+                // Opción 1: Abrir con visor predeterminado
+                java.awt.Desktop.getDesktop().open(pdf);
+            }
+        } else {
+            System.out.println("No se encontró el turno con ese ID.");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
     
     
     

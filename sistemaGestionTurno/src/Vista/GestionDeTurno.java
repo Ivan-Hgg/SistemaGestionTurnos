@@ -101,7 +101,12 @@ public class GestionDeTurno extends javax.swing.JFrame {
         jLabel6.setText("Se le asignara el horario automaticamente");
 
         ComboTipoGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ComboTipoGestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inscripcion fuera de termino", "Cambio de comision", "Cambio de plan", "Baja de regularidad" }));
+        ComboTipoGestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inscripcion fuera de termino", "Cambio de Comision", "Cambio de plan", "Baja de regularidad" }));
+        ComboTipoGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboTipoGestionActionPerformed(evt);
+            }
+        });
 
         agregarDocumentosBoton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregarDocumentosBoton.setText("Agregar documentos");
@@ -217,6 +222,10 @@ public class GestionDeTurno extends javax.swing.JFrame {
     private void ComboFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboFechaActionPerformed
+
+    private void ComboTipoGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoGestionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboTipoGestionActionPerformed
 
     /**
      * @param args the command line arguments

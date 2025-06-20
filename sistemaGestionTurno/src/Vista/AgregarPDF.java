@@ -3,6 +3,7 @@ package Vista;
 
 import Controlador.Controlador;
 import Controlador.ControladorAgregarPDF;
+import Controlador.ControladorGestionDeTurno;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -54,7 +55,7 @@ public class AgregarPDF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        ControladorAgregarPDF.SeleccionDeArchivo(this, evt);
+        ControladorGestionDeTurno.obtenerRutaDocumento(ControladorAgregarPDF.SeleccionDeArchivo(this, evt));
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
