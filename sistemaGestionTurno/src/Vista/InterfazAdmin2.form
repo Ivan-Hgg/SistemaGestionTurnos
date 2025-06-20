@@ -31,6 +31,7 @@
                           <Component id="jButton2" min="-2" pref="270" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="270" max="-2" attributes="0"/>
                           <Component id="botonAgregarDocumento" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="btVisualizarPDF" alignment="0" min="-2" pref="270" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -53,7 +54,9 @@
               <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="btVisualizarPDF" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,6 +113,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAgregarDocumentoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btVisualizarPDF">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Visualizar PDF de un Turno"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVisualizarPDFActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
