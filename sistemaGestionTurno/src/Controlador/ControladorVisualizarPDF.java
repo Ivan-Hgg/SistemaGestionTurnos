@@ -23,17 +23,23 @@ public class ControladorVisualizarPDF {
     
     public static void iniciarVisualPDF(){
         v.setVisible(true);
+        TableColumnModel columnModel = v.getGrilla().getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(10);
+        columnModel.getColumn(2).setPreferredWidth(10);
+        columnModel.getColumn(3).setPreferredWidth(60);
+        columnModel.getColumn(4).setPreferredWidth(120);
+    }
+    
+    public static void cerrarVisualPDFAbrirIa2(){
+        v.dispose();
+        v.getTfLegajo().setText("");
+        v.getTfIdTurno().setText("");
+        ControladorInterfazAdmin2.iniciarIa2();
     }
     
     public static void llenarJtableVerPDF(){
         try {
             legajo= Integer.parseInt(v.getTfLegajo().getText());
-            TableColumnModel columnModel = v.getGrilla().getColumnModel();
-            columnModel.getColumn(0).setPreferredWidth(10);
-            columnModel.getColumn(2).setPreferredWidth(10);
-            columnModel.getColumn(3).setPreferredWidth(60);
-            columnModel.getColumn(4).setPreferredWidth(120);
-
             DefaultTableModel model = (DefaultTableModel) v.getGrilla().getModel();
             String apenom, docnom;
             model.setNumRows(0);

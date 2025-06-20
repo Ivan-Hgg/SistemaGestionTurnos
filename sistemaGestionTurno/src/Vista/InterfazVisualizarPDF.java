@@ -38,6 +38,7 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tfIdTurno = new javax.swing.JTextField();
         btVisualizar = new javax.swing.JButton();
+        btRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Visualizar PDF");
@@ -84,6 +85,16 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
             }
         });
 
+        btRegresar.setBackground(new java.awt.Color(0, 0, 102));
+        btRegresar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btRegresar.setText("Regresar");
+        btRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +119,8 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(tfLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btBuscar))))
+                                    .addComponent(btBuscar)))
+                            .addComponent(btRegresar))
                         .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -134,7 +146,9 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addComponent(tfIdTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btRegresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,8 +161,13 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
 
     private void btVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarActionPerformed
         // TODO add your handling code here:
-        
+        ControladorVisualizarPDF.visualizarPDF();
     }//GEN-LAST:event_btVisualizarActionPerformed
+
+    private void btRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegresarActionPerformed
+        // TODO add your handling code here:
+        ControladorVisualizarPDF.cerrarVisualPDFAbrirIa2();
+    }//GEN-LAST:event_btRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +207,7 @@ public class InterfazVisualizarPDF extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Grilla;
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btRegresar;
     private javax.swing.JButton btVisualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

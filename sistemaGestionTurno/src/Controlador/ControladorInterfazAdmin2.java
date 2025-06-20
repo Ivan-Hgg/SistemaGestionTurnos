@@ -30,5 +30,9 @@ public class ControladorInterfazAdmin2 {
         ia2.dispose();
         ControladorGestionDoc.iniciarGestionDoc();
     }
+    public static void cerrarIa2AbrirVisualPDF(){
+        ia2.dispose();
+        ControladorVisualizarPDF.iniciarVisualPDF();
+    }
     
 }

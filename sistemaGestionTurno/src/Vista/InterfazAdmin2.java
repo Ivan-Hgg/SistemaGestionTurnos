@@ -132,7 +132,7 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
 
     private void btVisualizarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarPDFActionPerformed
         // TODO add your handling code here:
-        ControladorVisualizarPDF.iniciarVisualPDF();
+        ControladorInterfazAdmin2.cerrarIa2AbrirVisualPDF();
     }//GEN-LAST:event_btVisualizarPDFActionPerformed
 
     /**
