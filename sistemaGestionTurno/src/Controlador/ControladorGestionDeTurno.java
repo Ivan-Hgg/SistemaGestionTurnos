@@ -61,25 +61,37 @@ public class ControladorGestionDeTurno {
         if(idDoc!=0){
             int idAlum=ControladorInterfaz1.retornarIdUsuario();
             if(idAlum!=0){
-                Turno turno = new Turno(fechaTurno, idDoc, codigo, idAlum, 1);//CORREGIR LOS CAMPOS
-                boolean exito = b.agregarTurno(turno, ruta);
-                if(exito){
-                    String mensaje = "✅ Turno confirmado:\n\n"
-                               + "📄 Tipo de gestión: " + tipoGestion + "\n"
-                               + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
-                               + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
-                               + "🔐 Código: " + codigo;
+                if(ruta != null){
+                    Turno turno = new Turno(fechaTurno, idDoc, codigo, idAlum, 1);//CORREGIR LOS CAMPOS
+                    boolean exito = b.agregarTurno(turno, ruta);
+                    if(exito){
+                        String mensaje = "✅ Turno confirmado:\n\n"
+                                   + "📄 Tipo de gestión: " + tipoGestion + "\n"
+                                   + "📅 Fecha: " + dia + "/" + mes + "/" + anio + "\n"
+                                   + "⏰ Hora: " + String.format("%02d:%02d", hora, min) + "\n"
+                                   + "🔐 Código: " + codigo;
 
-                    JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(g, mensaje, "Turno Confirmado", JOptionPane.INFORMATION_MESSAGE);
 
-                    g.dispose(); 
-                    cerrarGTAbrirMA();
+                        g.dispose(); 
+                        cerrarGTAbrirMA();
+                    }else{
+                        JOptionPane.showMessageDialog(g, "ERROR subiendo turno a la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        //hay error se debrian limpiar los campos.
+                    }
                 }else{
-                    //hay error se debrian limpiar los campos.
+                    JOptionPane.showMessageDialog(g, "ERROR: no seleccionó un archivo", "Error", JOptionPane.ERROR_MESSAGE);
+
                 }
+                
                 //
+            }else{
+                JOptionPane.showMessageDialog(g, "ERROR: no se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            //
+        }else{
+            JOptionPane.showMessageDialog(g, "ERROR: no se encontró el documento", "Error", JOptionPane.ERROR_MESSAGE);
+
         }
         
 

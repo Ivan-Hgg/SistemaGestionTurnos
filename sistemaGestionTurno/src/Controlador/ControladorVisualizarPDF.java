@@ -19,6 +19,7 @@ public class ControladorVisualizarPDF {
     private static InterfazVisualizarPDF v = new InterfazVisualizarPDF();
     private static BD b = new BD();
     private static int legajo; 
+    private static DefaultTableModel model = (DefaultTableModel) v.getGrilla().getModel();
     
     
     public static void iniciarVisualPDF(){
@@ -34,13 +35,14 @@ public class ControladorVisualizarPDF {
         v.dispose();
         v.getTfLegajo().setText("");
         v.getTfIdTurno().setText("");
+        model.setNumRows(0);
         ControladorInterfazAdmin2.iniciarIa2();
     }
     
     public static void llenarJtableVerPDF(){
         try {
             legajo= Integer.parseInt(v.getTfLegajo().getText());
-            DefaultTableModel model = (DefaultTableModel) v.getGrilla().getModel();
+            
             String apenom, docnom;
             model.setNumRows(0);
             for (Turno t : b.obtenerTurnosDeAlumno(legajo)) {
@@ -74,8 +76,19 @@ public class ControladorVisualizarPDF {
     public static void visualizarPDF(){
         try {
             int idTur= Integer.parseInt(v.getTfIdTurno().getText());
+            boolean bandera=false;
             String destino= "Salida"+idTur+".pdf";
-            b.recuperarPdf(idTur, destino);
+            for (Turno t: b.obtenerTurnosDeAlumno(legajo)) {
+                if(t.getId()==idTur){
+                    b.recuperarPdf(idTur, destino);
+                    bandera=true;
+                }
+            }
+            if(bandera==false){
+                JOptionPane.showMessageDialog(v, "El turno que busca no existe o no pertenece al usuario", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(v, "Error en el ingreso de datos", "Mensaje de Error", JOptionPane.ERROR_MESSAGE);
 

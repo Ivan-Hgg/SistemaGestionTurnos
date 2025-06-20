@@ -221,6 +221,7 @@ public class BD {
             return res.getInt("idUSUARIO");
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR: No se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
             return 0;
         }
         
@@ -234,6 +235,7 @@ public class BD {
             return res.getString("APENOM");
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "ERROR: el legajo no se encontró en la Base de datos", "Error", JOptionPane.ERROR_MESSAGE);
             return "Error";
         }
         
@@ -415,28 +417,33 @@ public class BD {
         ArrayList<Turno> turs = new ArrayList<>();
         try {
             int id=obtenerIDUsuario(legajo);
-            Statement s = c.createStatement();
-            ResultSet res= s.executeQuery("SELECT * FROM turnos WHERE idUSUARIO= "+ id +" ORDER BY FECHTUR ASC");
-            while(res.next()){
-                int idT = res.getInt("idTURNOS");
-                int idI= res.getInt("idINTERVALO");
-                int idU= res.getInt("idUSUARIO");
-                int idD= res.getInt("idDOCUMENTOS");
-                String codseg= res.getString("CODSEG");
+            if(id!=0){
+                Statement s = c.createStatement();
+                ResultSet res= s.executeQuery("SELECT * FROM turnos WHERE idUSUARIO= "+ id +" ORDER BY FECHTUR ASC");
+                while(res.next()){
+                    int idT = res.getInt("idTURNOS");
+                    int idI= res.getInt("idINTERVALO");
+                    int idU= res.getInt("idUSUARIO");
+                    int idD= res.getInt("idDOCUMENTOS");
+                    String codseg= res.getString("CODSEG");
 
-                // Convertir correctamente
-                Timestamp tsIng = res.getTimestamp("FECHTUR");
+                    // Convertir correctamente
+                    Timestamp tsIng = res.getTimestamp("FECHTUR");
 
-                LocalDateTime fechaTur = tsIng != null ? tsIng.toLocalDateTime() : null;
+                    LocalDateTime fechaTur = tsIng != null ? tsIng.toLocalDateTime() : null;
 
-                Turno tur = new Turno(idT, fechaTur, idD, codseg, idU, idI);
-                turs.add(tur);
+                    Turno tur = new Turno(idT, fechaTur, idD, codseg, idU, idI);
+                    turs.add(tur);
+                }
+                return turs;
             }
+            return turs;
         }catch (Exception e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "ERROR: no se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            return turs;
         }
-        return turs;
+        
     }
     
     
