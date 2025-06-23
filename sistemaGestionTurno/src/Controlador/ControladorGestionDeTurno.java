@@ -5,10 +5,16 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.Documento;
+import Modelo.Intervalo;
 import Modelo.Turno;
 import Modelo.Usuario;
 import Vista.GestionDeTurno;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +27,11 @@ public class ControladorGestionDeTurno {
     static String ruta;
     
     public static void iniciarGT(){
+        llenarComboBox();
         g.setVisible(true);
+    }
+    public static void cerrarGT(){
+        g.dispose();
     }
     public static void cerrarGTAbrirMA(){
         g.dispose();
@@ -34,13 +44,74 @@ public class ControladorGestionDeTurno {
     public static void obtenerRutaDocumento(String t){
         ruta= t;//esto es para tener la ruta de los documentos y pasarlo a BD para subirlo a la base de datos
     }
+    public static void llenarComboBox(){
+
+        JComboBox<String> combo = g.getComboTipoGestion();
+        combo.removeAllItems();
+
+        ArrayList<Documento> documentos = b.obtenerDocumentos();
+        for (Documento doc : documentos) {
+            combo.addItem(doc.getNombre());// solo muestra el nombre
+        }
+    }
+public static int obtenerIDDocumento() {
+    JComboBox<String> combo = g.getComboTipoGestion();
+    String seleccionado = (String) combo.getSelectedItem(); // lo que seleccionó el usuario
+    ArrayList<Documento> documentos = b.obtenerDocumentos();
     
+
+    for (Documento doc : documentos) {
+        if (doc.getNombre().equals(seleccionado)) { 
+            System.out.println("el ID seleccionado es:" + doc.getId());
+            return doc.getId(); // lo encontramos, devolvemos
+            
+        }
+    }
+    System.out.println("no se encontro id");
+    return 0; // no encontrado
+}
     
+public static void llenarCombosFecha() {
+    JComboBox<String> comboDia = g.getComboFechaDia();
+    JComboBox<String> comboMes = g.getComboFechaMes();
+    JComboBox<String> comboAnio = g.getComboFechaAño();
+
+    comboDia.removeAllItems();
+    comboMes.removeAllItems();
+    comboAnio.removeAllItems();
+
+    int idDoc = obtenerIDDocumento();
+    ArrayList<Intervalo> intervalos = b.obtenerIntervalo();
+
+    Set<Integer> dias = new TreeSet<>();
+    Set<Integer> meses = new TreeSet<>();
+    Set<Integer> anios = new TreeSet<>();
+
+    for (Intervalo in : intervalos) {
+        // Este filtro deberías adaptarlo si los Intervalos tienen una relación con Documento
+        if(idDoc == in.getId()){
+        LocalDateTime fecha = in.getFechaIng();
+        LocalDateTime fin = in.getFechaOut();
+
+        while (!fecha.isAfter(fin)) {
+            dias.add(fecha.getDayOfMonth());
+            meses.add(fecha.getMonthValue());
+            anios.add(fecha.getYear());
+            fecha = fecha.plusDays(1);
+        }
+    }
+    }
+
+    // Llenar combos con los valores únicos y ordenados
+    for (int d : dias) comboDia.addItem(String.valueOf(d));
+    for (int m : meses) comboMes.addItem(String.valueOf(m));
+    for (int a : anios) comboAnio.addItem(String.valueOf(a));
+}
     
     
     //FALTA RESOLVER QUE GUARDE EL ID DEL INTERVALO CORREGIR
     public static void ConfirmarTurno() {
-        String tipoGestion = g.getComboTipoGestion().getSelectedItem().toString();
+  /*      String tipoGestion = g.getComboTipoGestion().getSelectedItem().toString();
         String fechaTexto = g.getComboFecha().getSelectedItem().toString();
 
         //CORREGIR QUE OBTENGA LA FECHA DEL TURNO QUE SELECCIONO, NO ES ALGO QUE DEJEMOS FIJO
@@ -92,7 +163,7 @@ public class ControladorGestionDeTurno {
         }else{
             JOptionPane.showMessageDialog(g, "ERROR: no se encontró el documento", "Error", JOptionPane.ERROR_MESSAGE);
 
-        }
+        }*/
         
 
 }

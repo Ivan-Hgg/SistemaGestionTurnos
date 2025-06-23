@@ -176,6 +176,7 @@ public class InterfazMainAlumno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarTurnoActionPerformed
+        
         ControladorInterfazMainAlumno.cerrarMAAbrirGT();
     }//GEN-LAST:event_botonAgregarTurnoActionPerformed
 
