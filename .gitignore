@@ -25,7 +25,7 @@ hs_err_pid*
 replay_pid*
 
 # Opcional: solo si no necesitas versionar ningún .properties
-# *.properties
+*.properties
 
 ### NetBeans ###
 nbproject/private/
