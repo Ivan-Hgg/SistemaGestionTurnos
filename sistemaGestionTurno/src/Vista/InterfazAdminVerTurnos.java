@@ -71,20 +71,20 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo de Gestion", "Legajo", "Nombre ", "Fecha y Hora ", "Documento"
+                "Codigo seg", "Ape y Nom", "Legajo ", "Correo  ", "Fecha", "Hora", "documento"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -136,19 +136,24 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo ", "Tipo de Gestion ", "Legajo", "Nombre", "Fecha y Hora", "Documento"
+                "Codigo Seg", "Ape y Nom", "Legajo", "Correo", "Fecha", "Hora", "documento"
             }
         ));
         jTable2.setToolTipText("");
         jScrollPane2.setViewportView(jTable2);
 
         jButton1.setText("Siguiente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Atendido");
@@ -274,6 +279,10 @@ public class InterfazAdminVerTurnos extends javax.swing.JFrame {
     private void SAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SAñoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SAñoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControladorInterfazAdminVerTurnos.siguienteTurno();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,11 +425,11 @@ public javax.swing.JTextField getSAño() {
     }
 
     public javax.swing.JTable getjTable2() {
-        return jTable1;
+        return jTable2;
     }
 
     public void setjTable2(javax.swing.JTable jTable2) {
-        this.jTable1 = jTable1;
+        this.jTable2 = jTable2;
     }
     
 }
