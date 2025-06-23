@@ -44,9 +44,10 @@ public class ControladorGestionDeTurno {
         String fechaTexto = g.getComboFecha().getSelectedItem().toString();
 
         //CORREGIR QUE OBTENGA LA FECHA DEL TURNO QUE SELECCIONO, NO ES ALGO QUE DEJEMOS FIJO
-        int dia = Integer.parseInt(fechaTexto.split(" ")[0]);
-        int mes = 4; //CORREGIR
-        int anio = 2025;//CORREGIR
+        String[] partesFecha = fechaTexto.split("/"); // asumiendo formato "dd/MM/yyyy"
+        int dia = Integer.parseInt(partesFecha[0]);
+        int mes = Integer.parseInt(partesFecha[1]);
+        int anio = Integer.parseInt(partesFecha[2]);
 
         // Asignar horario automático / CORREGIR QUE SEA 5 MINUTOS LUEGO DEL ANTERIOR TURNO
         //tener en cuenta que NO TRABAJAN TODO EL DIA por lo que los horarios son de la joranada que tengan
@@ -54,7 +55,15 @@ public class ControladorGestionDeTurno {
         int hora = 9 + (int)(Math.random() * 5); // entre 9 y 13
         int min = Math.random() < 0.5 ? 0 : 30;
         LocalDateTime fechaTurno = LocalDateTime.of(anio, mes, dia, hora, min);
-        
+        LocalDateTime ultimoTurno = b.obtenerUltimoTurnoDelDia(anio, mes, dia);
+LocalDateTime nuevoTurno;
+
+if (ultimoTurno != null) {
+    nuevoTurno = ultimoTurno.plusMinutes(5);
+} else {
+    nuevoTurno = LocalDateTime.of(anio, mes, dia, 9, 0); // primer turno
+}
+
         String codigo = generarCodigoUnico();
         int idDoc=b.obtenerIDDocumentos(tipoGestion);
         

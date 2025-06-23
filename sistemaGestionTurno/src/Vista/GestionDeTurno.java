@@ -219,13 +219,13 @@ public class GestionDeTurno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cancelarBotonActionPerformed
 
-    private void ComboFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboFechaActionPerformed
-
     private void ComboTipoGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoGestionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboTipoGestionActionPerformed
+
+    private void ComboFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboFechaActionPerformed
 
     /**
      * @param args the command line arguments

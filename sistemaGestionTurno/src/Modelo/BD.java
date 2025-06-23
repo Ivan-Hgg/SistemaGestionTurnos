@@ -443,8 +443,13 @@ public class BD {
             JOptionPane.showMessageDialog(null, "ERROR: no se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
             return turs;
         }
-        
     }
+        public LocalDateTime obtenerUltimoTurnoDelDia(int anio, int mes, int dia){
+        return null;
+    }
+
+        
+    
     
     
     
