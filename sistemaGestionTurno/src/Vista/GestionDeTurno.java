@@ -45,7 +45,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
         ComboTipoGestion = new javax.swing.JComboBox<>();
         agregarDocumentosBoton = new javax.swing.JButton();
         ComboFecha = new javax.swing.JComboBox<>();
-        continuar = new javax.swing.JButton();
+        confirmarBoton = new javax.swing.JButton();
         cancelarBoton = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
@@ -124,13 +124,13 @@ public class GestionDeTurno extends javax.swing.JFrame {
             }
         });
 
-        continuar.setBackground(new java.awt.Color(0, 0, 102));
-        continuar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        continuar.setForeground(new java.awt.Color(255, 255, 255));
-        continuar.setText("Confirmar turno");
-        continuar.addActionListener(new java.awt.event.ActionListener() {
+        confirmarBoton.setBackground(new java.awt.Color(0, 0, 102));
+        confirmarBoton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmarBoton.setForeground(new java.awt.Color(255, 255, 255));
+        confirmarBoton.setText("Confirmar turno");
+        confirmarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarActionPerformed(evt);
+                confirmarBotonActionPerformed(evt);
             }
         });
 
@@ -170,7 +170,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancelarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -197,7 +197,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(continuar)
+                    .addComponent(confirmarBoton)
                     .addComponent(cancelarBoton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -210,9 +210,9 @@ public class GestionDeTurno extends javax.swing.JFrame {
         ControladorGestionDeTurno.cerrarGTAbrirAD();
     }//GEN-LAST:event_agregarDocumentosBotonActionPerformed
 
-    private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
+    private void confirmarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBotonActionPerformed
         ControladorGestionDeTurno.ConfirmarTurno();
-    }//GEN-LAST:event_continuarActionPerformed
+    }//GEN-LAST:event_confirmarBotonActionPerformed
 
     private void cancelarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBotonActionPerformed
         ControladorInterfazMainAlumno.iniciarVentanaMA();
@@ -268,7 +268,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboTipoGestion;
     private javax.swing.JButton agregarDocumentosBoton;
     private javax.swing.JButton cancelarBoton;
-    private javax.swing.JButton continuar;
+    private javax.swing.JButton confirmarBoton;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JDialog jDialog1;
@@ -300,11 +300,6 @@ public class GestionDeTurno extends javax.swing.JFrame {
     public void setComboTipoGestion(javax.swing.JComboBox<String> ComboTipoGestion) {
         this.ComboTipoGestion = ComboTipoGestion;
     }
-
-   
-
-
-
 
 
 }

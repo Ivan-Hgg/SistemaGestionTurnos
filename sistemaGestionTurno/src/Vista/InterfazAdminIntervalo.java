@@ -33,9 +33,9 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btModificar = new javax.swing.JButton();
-        btAgregar = new javax.swing.JButton();
-        btEliminar = new javax.swing.JButton();
+        modificarBoton = new javax.swing.JButton();
+        agregarBoton = new javax.swing.JButton();
+        eliminarBoton = new javax.swing.JButton();
         tfId = new javax.swing.JTextField();
         tfAnio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -45,7 +45,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btAgregarDocs = new javax.swing.JButton();
+        agregarDocsBoton = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -87,50 +87,53 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Fecha inicio", "Fecha fin", "Documentos"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btModificar.setBackground(new java.awt.Color(0, 0, 102));
-        btModificar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        btModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btModificar.setText("Modificar");
-        btModificar.addActionListener(new java.awt.event.ActionListener() {
+        modificarBoton.setBackground(new java.awt.Color(0, 0, 102));
+        modificarBoton.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        modificarBoton.setForeground(new java.awt.Color(255, 255, 255));
+        modificarBoton.setText("Modificar");
+        modificarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btModificarActionPerformed(evt);
+                modificarBotonActionPerformed(evt);
             }
         });
 
-        btAgregar.setBackground(new java.awt.Color(0, 0, 102));
-        btAgregar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        btAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btAgregar.setText("Agregar");
-        btAgregar.addActionListener(new java.awt.event.ActionListener() {
+        agregarBoton.setBackground(new java.awt.Color(0, 0, 102));
+        agregarBoton.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        agregarBoton.setForeground(new java.awt.Color(255, 255, 255));
+        agregarBoton.setText("Agregar");
+        agregarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAgregarActionPerformed(evt);
+                agregarBotonActionPerformed(evt);
             }
         });
 
-        btEliminar.setBackground(new java.awt.Color(0, 0, 102));
-        btEliminar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        btEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btEliminar.setText("eliminar");
-        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+        eliminarBoton.setBackground(new java.awt.Color(0, 0, 102));
+        eliminarBoton.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        eliminarBoton.setForeground(new java.awt.Color(255, 255, 255));
+        eliminarBoton.setText("eliminar");
+        eliminarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEliminarActionPerformed(evt);
+                eliminarBotonActionPerformed(evt);
             }
         });
 
         tfId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfIdActionPerformed(evt);
+            }
+        });
+
+        tfAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfAnioActionPerformed(evt);
             }
         });
 
@@ -151,20 +154,20 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("LA TABLA MUESTRA LOS INTERVALOS Y LOS DOCUMENTOS QUE ENTRAN EN ESE INTERVALO");
 
-        btAgregarDocs.setBackground(new java.awt.Color(0, 0, 102));
-        btAgregarDocs.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        btAgregarDocs.setForeground(new java.awt.Color(255, 255, 255));
-        btAgregarDocs.setText("Agregar  Documento");
-        btAgregarDocs.addActionListener(new java.awt.event.ActionListener() {
+        agregarDocsBoton.setBackground(new java.awt.Color(0, 0, 102));
+        agregarDocsBoton.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        agregarDocsBoton.setForeground(new java.awt.Color(255, 255, 255));
+        agregarDocsBoton.setText("Agregar  Documento");
+        agregarDocsBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAgregarDocsActionPerformed(evt);
+                agregarDocsBotonActionPerformed(evt);
             }
         });
 
         btCancelar.setBackground(new java.awt.Color(0, 0, 102));
         btCancelar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btCancelar.setText("Cancelar");
+        btCancelar.setText("Volver");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -238,7 +241,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAgregarDocs)
+                        .addComponent(agregarDocsBoton)
                         .addGap(28, 28, 28)
                         .addComponent(labelConfirmacion))
                     .addGroup(layout.createSequentialGroup()
@@ -297,11 +300,6 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfDia, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jLabel2)
                         .addGap(35, 35, 35)
@@ -310,13 +308,22 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                         .addGap(373, 373, 373)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(btAgregar)
-                        .addGap(52, 52, 52)
-                        .addComponent(btModificar)
-                        .addGap(55, 55, 55)
-                        .addComponent(btEliminar)))
+                        .addGap(179, 179, 179)
+                        .addComponent(agregarBoton)
+                        .addGap(67, 67, 67)
+                        .addComponent(modificarBoton)
+                        .addGap(63, 63, 63)
+                        .addComponent(eliminarBoton)))
                 .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,13 +331,13 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEliminar)
-                    .addComponent(btModificar)
-                    .addComponent(btAgregar))
+                    .addComponent(eliminarBoton)
+                    .addComponent(modificarBoton)
+                    .addComponent(agregarBoton))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -341,7 +348,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                     .addComponent(tfId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
@@ -386,10 +393,10 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAgregarDocs)
+                    .addComponent(agregarDocsBoton)
                     .addComponent(jLabel6)
                     .addComponent(labelConfirmacion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(btCancelar)
                 .addContainerGap())
         );
@@ -397,21 +404,21 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
+    private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btModificarActionPerformed
+    }//GEN-LAST:event_modificarBotonActionPerformed
 
-    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+    private void agregarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBotonActionPerformed
+        ControladorAdminIntervalo.botonAgregar();
+    }//GEN-LAST:event_agregarBotonActionPerformed
+
+    private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAgregarActionPerformed
+    }//GEN-LAST:event_eliminarBotonActionPerformed
 
-    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btEliminarActionPerformed
-
-    private void btAgregarDocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarDocsActionPerformed
+    private void agregarDocsBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDocsBotonActionPerformed
         ControladorAdminIntervalo.cerrarAdminInterAbrirAgregDocInt();
-    }//GEN-LAST:event_btAgregarDocsActionPerformed
+    }//GEN-LAST:event_agregarDocsBotonActionPerformed
 
     private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
         // TODO add your handling code here:
@@ -421,6 +428,10 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControladorAdminIntervalo.cerrarAdminInterRegresoAdmin2();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void tfAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAnioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfAnioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,11 +471,10 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TfMin;
     private javax.swing.JTextField TfMin1;
-    private javax.swing.JButton btAgregar;
-    private javax.swing.JButton btAgregarDocs;
+    private javax.swing.JButton agregarBoton;
+    private javax.swing.JButton agregarDocsBoton;
     private javax.swing.JButton btCancelar;
-    private javax.swing.JButton btEliminar;
-    private javax.swing.JButton btModificar;
+    private javax.swing.JButton eliminarBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -495,6 +505,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelConfirmacion;
+    private javax.swing.JButton modificarBoton;
     private javax.swing.JTextField tfAnio;
     private javax.swing.JTextField tfAnio1;
     private javax.swing.JTextField tfDia;
@@ -506,4 +517,144 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     private javax.swing.JTextField tfMes1;
     private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getTfMin() {
+        return TfMin;
+    }
+
+    public void setTfMin(javax.swing.JTextField TfMin) {
+        this.TfMin = TfMin;
+    }
+
+    public javax.swing.JTextField getTfMin1() {
+        return TfMin1;
+    }
+
+    public void setTfMin1(javax.swing.JTextField TfMin1) {
+        this.TfMin1 = TfMin1;
+    }
+
+    public javax.swing.JButton getAgregarBoton() {
+        return agregarBoton;
+    }
+
+    public void setAgregarBoton(javax.swing.JButton agregarBoton) {
+        this.agregarBoton = agregarBoton;
+    }
+
+    public javax.swing.JButton getAgregarDocsBoton() {
+        return agregarDocsBoton;
+    }
+
+    public void setAgregarDocsBoton(javax.swing.JButton agregarDocsBoton) {
+        this.agregarDocsBoton = agregarDocsBoton;
+    }
+
+    public javax.swing.JButton getBtCancelar() {
+        return btCancelar;
+    }
+
+    public void setBtCancelar(javax.swing.JButton btCancelar) {
+        this.btCancelar = btCancelar;
+    }
+
+    public javax.swing.JButton getEliminarBoton() {
+        return eliminarBoton;
+    }
+
+    public void setEliminarBoton(javax.swing.JButton eliminarBoton) {
+        this.eliminarBoton = eliminarBoton;
+    }
+
+    public javax.swing.JTextField getTfAnio() {
+        return tfAnio;
+    }
+
+    public void setTfAnio(javax.swing.JTextField tfAnio) {
+        this.tfAnio = tfAnio;
+    }
+
+    public javax.swing.JTextField getTfAnio1() {
+        return tfAnio1;
+    }
+
+    public void setTfAnio1(javax.swing.JTextField tfAnio1) {
+        this.tfAnio1 = tfAnio1;
+    }
+
+    public javax.swing.JTextField getTfDia() {
+        return tfDia;
+    }
+
+    public void setTfDia(javax.swing.JTextField tfDia) {
+        this.tfDia = tfDia;
+    }
+
+    public javax.swing.JTextField getTfDia1() {
+        return tfDia1;
+    }
+
+    public void setTfDia1(javax.swing.JTextField tfDia1) {
+        this.tfDia1 = tfDia1;
+    }
+
+    public javax.swing.JTextField getTfHora() {
+        return tfHora;
+    }
+
+    public void setTfHora(javax.swing.JTextField tfHora) {
+        this.tfHora = tfHora;
+    }
+
+    public javax.swing.JTextField getTfHora1() {
+        return tfHora1;
+    }
+
+    public void setTfHora1(javax.swing.JTextField tfHora1) {
+        this.tfHora1 = tfHora1;
+    }
+
+    public javax.swing.JTextField getTfId() {
+        return tfId;
+    }
+
+    public void setTfId(javax.swing.JTextField tfId) {
+        this.tfId = tfId;
+    }
+
+    public javax.swing.JTextField getTfMes() {
+        return tfMes;
+    }
+
+    public void setTfMes(javax.swing.JTextField tfMes) {
+        this.tfMes = tfMes;
+    }
+
+    public javax.swing.JTextField getTfMes1() {
+        return tfMes1;
+    }
+
+    public void setTfMes1(javax.swing.JTextField tfMes1) {
+        this.tfMes1 = tfMes1;
+    }
+
+    public javax.swing.JTextField getTfNombre() {
+        return tfNombre;
+    }
+
+    public void setTfNombre(javax.swing.JTextField tfNombre) {
+        this.tfNombre = tfNombre;
+    }
+
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+   
+
+
 }
