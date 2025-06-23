@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
-/**
- *
- * @author Ivan y otros
- */
+
 public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
 
     /**
@@ -47,10 +41,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "idDOCUMENTO", "Titulo"
@@ -63,10 +54,7 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "idDOCUMENTO", "Titulo"
@@ -91,6 +79,11 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         btEliminar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btEliminar.setText("Eliminar");
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
         btCancelar.setBackground(new java.awt.Color(0, 0, 102));
         btCancelar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -106,6 +99,11 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         btAgregar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btAgregar.setText("Agregar");
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +175,14 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFIdDocumentoActionPerformed
 
+    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+        Controlador.ControladorInterfazAgregarDocIntervalo.agregarDocumentoAIntervalo();
+    }//GEN-LAST:event_btAgregarActionPerformed
+
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        Controlador.ControladorInterfazAgregarDocIntervalo.eliminarDocumentoDeIntervalo();
+    }//GEN-LAST:event_btEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -226,4 +232,48 @@ public class InterfazAgregarDocumentoIntervalo extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getTFIdDocumento() {
+        return TFIdDocumento;
+    }
+
+    public void setTFIdDocumento(javax.swing.JTextField TFIdDocumento) {
+        this.TFIdDocumento = TFIdDocumento;
+    }
+
+    public javax.swing.JButton getBtAgregar() {
+        return btAgregar;
+    }
+
+    public void setBtAgregar(javax.swing.JButton btAgregar) {
+        this.btAgregar = btAgregar;
+    }
+
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    public javax.swing.JTable getjTable2() {
+        return jTable2;
+    }
+
+    public void setjTable2(javax.swing.JTable jTable2) {
+        this.jTable2 = jTable2;
+    }
+    
+    private int idIntervaloActual;
+
+    public int getIdIntervaloActual() {
+    return idIntervaloActual;
+    }
+
+    public void setIdIntervaloActual(int idIntervaloActual) {
+    this.idIntervaloActual = idIntervaloActual;
+    }
+
 }
+

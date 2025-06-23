@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
 import Controlador.ControladorAdminIntervalo;
 
-/**
- *
- * @author Ivan y otros
- */
+
 public class InterfazAdminIntervalo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InterfazAdminIntervalo
-     */
+    
     public InterfazAdminIntervalo() {
         initComponents();
     }
@@ -118,7 +110,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
         eliminarBoton.setBackground(new java.awt.Color(0, 0, 102));
         eliminarBoton.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         eliminarBoton.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarBoton.setText("eliminar");
+        eliminarBoton.setText("Eliminar");
         eliminarBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarBotonActionPerformed(evt);
@@ -405,7 +397,7 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBotonActionPerformed
-        // TODO add your handling code here:
+        ControladorAdminIntervalo.botonModificar();
     }//GEN-LAST:event_modificarBotonActionPerformed
 
     private void agregarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBotonActionPerformed
@@ -413,11 +405,12 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarBotonActionPerformed
 
     private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
-        // TODO add your handling code here:
+        ControladorAdminIntervalo.botonEliminar();
     }//GEN-LAST:event_eliminarBotonActionPerformed
 
     private void agregarDocsBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarDocsBotonActionPerformed
-        ControladorAdminIntervalo.cerrarAdminInterAbrirAgregDocInt();
+       // ControladorAdminIntervalo.cerrarAdminInterAbrirAgregDocInt();
+          ControladorAdminIntervalo.abrirAgregarDocumentoParaNuevoIntervalo();
     }//GEN-LAST:event_agregarDocsBotonActionPerformed
 
     private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
@@ -653,8 +646,5 @@ public class InterfazAdminIntervalo extends javax.swing.JFrame {
     public void setjTable1(javax.swing.JTable jTable1) {
         this.jTable1 = jTable1;
     }
-
-   
-
 
 }
