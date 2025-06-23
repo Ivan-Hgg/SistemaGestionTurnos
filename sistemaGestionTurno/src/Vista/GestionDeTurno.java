@@ -267,7 +267,7 @@ public class GestionDeTurno extends javax.swing.JFrame {
 
     private void ComboTipoGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoGestionActionPerformed
         // TODO add your handling code here:
-        ControladorGestionDeTurno.obtenerIDDocumento();
+        //ControladorGestionDeTurno.obtenerIDDocumento();
         ControladorGestionDeTurno.llenarCombosFecha();
     }//GEN-LAST:event_ComboTipoGestionActionPerformed
 

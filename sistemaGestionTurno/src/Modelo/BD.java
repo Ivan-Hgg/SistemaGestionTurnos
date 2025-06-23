@@ -194,6 +194,48 @@ public class BD {
             System.out.println(e.getMessage());
         }   
     }
+    public ArrayList<Intervalo> obtenerIntervaloConSuID(ArrayList<Integer> ids) {
+    ArrayList<Intervalo> intervalos = new ArrayList<>();
+
+    for (int idInt : ids) {
+        try {
+            Statement s = c.createStatement();
+            ResultSet res = s.executeQuery("SELECT * FROM intervalo WHERE idINTERVALO = " + idInt);
+            while (res.next()) {
+                int id = res.getInt("idINTERVALO");
+
+                Timestamp tsIng = res.getTimestamp("FECHING");
+                Timestamp tsFin = res.getTimestamp("FECHFIN");
+
+                LocalDateTime fechaIng = tsIng != null ? tsIng.toLocalDateTime() : null;
+                LocalDateTime fechaFin = tsFin != null ? tsFin.toLocalDateTime() : null;
+
+                String nombre = res.getString("nombre");
+
+                Intervalo in = new Intervalo(id, fechaIng, fechaFin, nombre);
+                intervalos.add(in);
+            }
+        } catch (Exception e) {
+            System.out.println("Error obteniendo intervalo con id " + idInt + ": " + e.getMessage());
+        }
+    }
+
+    return intervalos;
+}
+public ArrayList<Integer> obtenerIdIntervalosDeDocumento(int idDocumento) {
+    ArrayList<Integer> ids = new ArrayList<>();
+    try {
+        Statement s = c.createStatement();
+        ResultSet res = s.executeQuery("SELECT idINTERVALO FROM documentos_has_intervalo WHERE idDOCUMENTOS = " + idDocumento);
+        while (res.next()) {
+            ids.add(res.getInt("idINTERVALO"));
+        }
+    } catch (Exception e) {
+        System.out.println("Error obteniendo IDs de intervalos: " + e.getMessage());
+    }
+    return ids;
+}
+
     
     //ABMQ USUARIOS ------------------------------------------------------------------------
     public ArrayList<Usuario> obtenerUsuario(){//SI FUNCIONA
