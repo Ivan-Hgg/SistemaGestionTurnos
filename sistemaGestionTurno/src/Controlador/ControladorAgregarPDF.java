@@ -40,7 +40,7 @@ public class ControladorAgregarPDF {
             
         } else if (evt.getActionCommand().equals(JFileChooser.CANCEL_SELECTION)) {
             ventanaActual.dispose();  // Cerramos la ventana actual
-            new GestionDeTurno().setVisible(true);
+            ControladorGestionDeTurno.iniciarGT();
             return "";
         }
         return"";

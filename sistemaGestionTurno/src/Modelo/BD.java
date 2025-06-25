@@ -417,6 +417,30 @@ public ArrayList<Integer> obtenerIdIntervalosDeDocumento(int idDocumento) {
         }
     }
     
+    public ArrayList<Turno> obtenerTurnosDeIntervalo(int idIntervalo) {
+    ArrayList<Turno> turs = new ArrayList<>();
+    try {
+        Statement s = c.createStatement();
+        ResultSet res = s.executeQuery("SELECT * FROM turnos WHERE idINTERVALO = " + idIntervalo);
+        while(res.next()){
+            int idT = res.getInt("idTURNOS");
+            int idI = res.getInt("idINTERVALO");
+            int idU = res.getInt("idUSUARIO");
+            int idD = res.getInt("idDOCUMENTOS");
+            String codseg = res.getString("CODSEG");
+
+            Timestamp ts = res.getTimestamp("FECHTUR");
+            LocalDateTime fecha = ts != null ? ts.toLocalDateTime() : null;
+
+            Turno tur = new Turno(idT, fecha, idD, codseg, idU, idI);
+            turs.add(tur);
+        }
+    } catch (Exception e) {
+        System.out.println("Error obteniendo turnos del intervalo: " + e.getMessage());
+    }
+    return turs;
+}
+    
     //Consultas distintas -------------------------------------------------------------------------------
     
     //esto es para recuperar el PDF de la BD y almacenarlo para verlo
