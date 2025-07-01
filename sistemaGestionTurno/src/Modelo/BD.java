@@ -571,8 +571,59 @@ public ArrayList<Integer> obtenerIdIntervalosDeDocumento(int idDocumento) {
             JOptionPane.showMessageDialog(null, "ERROR: no se encontró el usuario", "Error", JOptionPane.ERROR_MESSAGE);
             return turs;
         }
-        
     }
+        public LocalDateTime obtenerUltimoTurnoDelDia(int anio, int mes, int dia){
+        return null;
+    }
+        
+        
+public ArrayList<Object[]> obtenerTurnosConUsuario() {
+    ArrayList<Object[]> lista = new ArrayList<>();
+    try {
+        Statement s = c.createStatement();
+        ResultSet res = s.executeQuery(
+            "SELECT t.CODSEG, u.APENOM, u.LEGAJO, u.CORREO, t.FECHTUR, d.DOCNOM " +
+            "FROM turnos t " +
+            "JOIN usuario u ON t.idUSUARIO = u.idUSUARIO " +
+            "JOIN documentos d ON t.idDOCUMENTOS = d.idDOCUMENTOS " +
+            "ORDER BY t.FECHTUR ASC");
+
+        while (res.next()) {
+            String codSeg = res.getString("CODSEG");
+            String nombre = res.getString("APENOM");
+            int legajo = res.getInt("LEGAJO");
+            String correo = res.getString("CORREO");
+
+            Timestamp tsFechaHora = res.getTimestamp("FECHTUR");
+            LocalDateTime fechaHora = tsFechaHora != null ? tsFechaHora.toLocalDateTime() : null;
+
+            String nombreDocumento = res.getString("DOCNOM");
+
+            // Separar fecha y hora
+            String fechaStr = fechaHora != null ? fechaHora.toLocalDate().toString() : "";
+            String horaStr = fechaHora != null ? String.format("%02d:%02d", fechaHora.getHour(), fechaHora.getMinute()) : "";
+
+            Object[] fila = {
+                codSeg,
+                nombre,
+                legajo,
+                correo,
+                fechaStr,
+                horaStr,
+                nombreDocumento
+            };
+
+            lista.add(fila);
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+    return lista;
+}
+
+        
+        
+    
     
     
     
