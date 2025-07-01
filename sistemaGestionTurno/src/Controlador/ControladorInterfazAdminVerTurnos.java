@@ -26,7 +26,7 @@ public class ControladorInterfazAdminVerTurnos {
     
     public static void cerrarIavtAbrirIa2(){
         ventana.dispose();
-        ControladorInterfazAdmin2.iniciarIa2();
+        ControladorInterfazAdmin2.iniciarIa2() ;
     }
     
     public static void validarFechaSeleccionada() {
@@ -62,7 +62,7 @@ public class ControladorInterfazAdminVerTurnos {
             }
 
             // Validar que la fecha exista
-            LocalDate fecha = LocalDate.of(año, mes, dia);
+            LocalDate fecha = LocalDate.of(año, mes, dia) ;
 
             // Si todo está bien
             JOptionPane.showMessageDialog(ventana, "Fecha ingresada correctamente: " + fecha.toString(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
