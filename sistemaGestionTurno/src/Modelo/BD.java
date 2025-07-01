@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +27,51 @@ public class BD {
             System.out.println(e.getMessage());
         }
     }
+    
+    public int obtenerUltimoIdIntervalo() {
+    try {
+        Statement s = c.createStatement();
+        ResultSet res = s.executeQuery("SELECT MAX(idINTERVALO) AS id FROM intervalo");
+        if (res.next()) {
+            return res.getInt("id");
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+    return 0;
+    }
+
+    public boolean agregarDocumentoAIntervalo(int idIntervalo, int idDocumento) {
+    try {
+        PreparedStatement s = c.prepareStatement("INSERT INTO documentos_has_intervalo (idINTERVALO, idDOCUMENTOS) VALUES (?, ?)");
+        s.setInt(1, idIntervalo);
+        s.setInt(2, idDocumento);
+        s.executeUpdate();
+        return true;
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
+    }
+
+    
+    
+    public ArrayList<Documento> obtenerDocumentosDeIntervalo(int idInt){//SI FUNCIONA
+        ArrayList<Documento> docs = new ArrayList<>();
+        try {
+            Statement s = c.createStatement();
+            ResultSet res= s.executeQuery("SELECT idDOCUMENTOS FROM documentos_has_intervalo WHERE idINTERVALO="+idInt);
+            while(res.next()){
+                Documento d = new Documento(obtenerNOMBREDocumento(res.getInt("idDOCUMENTOS")), res.getInt("idDOCUMENTOS"));
+                docs.add(d);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return docs;
+    }
+  
+    
     
     //ABMQ DOCUMENTOS -------------------------------------------------------------------------
     public ArrayList<Documento> obtenerDocumentos(){//SI FUNCIONA
@@ -175,7 +217,26 @@ public class BD {
         }
     }
     
+    //fn eliminar intervalo de prueba
+    public void eliminarIntervalo(int codigo) {
+    try {
+        Statement s = c.createStatement();
+
+        // Primero eliminar las asociaciones en la tabla intermedia
+        s.executeUpdate("DELETE FROM documentos_has_intervalo WHERE idINTERVALO=" + codigo);
+
+        // Ahora sí eliminar el intervalo
+        s.executeUpdate("DELETE FROM intervalo WHERE idINTERVALO=" + codigo);
+
+        } catch (Exception e) {
+        System.out.println(e.getMessage());
+        }
+    }
+
+    
+    
     //ELIMINA PASANDOLE EL CODIGO DEL OBJETO DIRECTAMENTE COMO PARAMETRO
+   /*
     public void eliminarIntervalo(int codigo){//SI FUNCIONA
         try {
             Statement s = c.createStatement();
@@ -184,6 +245,7 @@ public class BD {
             System.out.println(e.getMessage());
         }
     }
+    */
     
     //POLIMORFISMO DE ELIMINAR DOCUMENTO, SACANDO EL ID DESDE EL OBJETO
     public void eliminarIntervalo(Intervalo i){//SI FUNCIONA

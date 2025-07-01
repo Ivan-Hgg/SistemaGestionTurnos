@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
 import Controlador.ControladorGestionDoc;
@@ -52,6 +49,12 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel2.setText("Nombre del documento");
 
+        TFNombreDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFNombreDocActionPerformed(evt);
+            }
+        });
+
         btCancelar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -64,16 +67,18 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
         btEliminar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btEliminar.setText("Eliminar");
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Id ", "Nombre"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -89,11 +94,21 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
         btModificar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btModificar.setForeground(new java.awt.Color(255, 255, 255));
         btModificar.setText("Modificar");
+        btModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModificarActionPerformed(evt);
+            }
+        });
 
         btAgregar2.setBackground(new java.awt.Color(0, 0, 102));
         btAgregar2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         btAgregar2.setForeground(new java.awt.Color(255, 255, 255));
         btAgregar2.setText("Agregar");
+        btAgregar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregar2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setText("Modificacion o eliminacion");
@@ -115,7 +130,17 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(TFNombreDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(TFNombreDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel5))
+                                    .addComponent(jLabel3)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,27 +149,14 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(btAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(TFNombreDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,6 +184,22 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControladorGestionDoc.cerrarGestionDocAbrirIa2();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void TFNombreDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFNombreDocActionPerformed
+       
+    }//GEN-LAST:event_TFNombreDocActionPerformed
+
+    private void btAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregar2ActionPerformed
+        ControladorGestionDoc.agregarDocs();
+    }//GEN-LAST:event_btAgregar2ActionPerformed
+
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        ControladorGestionDoc.eliminarDoc();
+    }//GEN-LAST:event_btEliminarActionPerformed
+
+    private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
+        ControladorGestionDoc.modificarDoc();
+    }//GEN-LAST:event_btModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,4 +252,20 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getTFNombreDoc() {
+        return TFNombreDoc;
+    }
+
+    public javax.swing.JTextField getTFNombreDoc1() {
+        return TFNombreDoc1;
+    }
+
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+
+    
+    
 }
