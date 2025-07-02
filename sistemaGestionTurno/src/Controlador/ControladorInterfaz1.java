@@ -24,6 +24,7 @@ public class ControladorInterfaz1 {
     
     public static void iniciarVentanaI1(){
         i1.setVisible(true);
+        limpiarCampos();
     }
     public static boolean buscarUsuario(String contra, int leg){
         boolean r=false; //false no encontro, true encontro

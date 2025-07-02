@@ -34,7 +34,8 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         botonAgregarDocumento = new javax.swing.JButton();
-        btVisualizarPDF = new javax.swing.JButton();
+        botonCerrarSesion = new javax.swing.JButton();
+        btVisualizarPDF1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,11 +70,21 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
             }
         });
 
-        btVisualizarPDF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btVisualizarPDF.setText("Visualizar PDF de un Turno");
-        btVisualizarPDF.addActionListener(new java.awt.event.ActionListener() {
+        botonCerrarSesion.setBackground(new java.awt.Color(0, 0, 102));
+        botonCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        botonCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        botonCerrarSesion.setText("Cerrar sesion");
+        botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVisualizarPDFActionPerformed(evt);
+                botonCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        btVisualizarPDF1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btVisualizarPDF1.setText("Visualizar PDF de un Turno");
+        btVisualizarPDF1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVisualizarPDF1ActionPerformed(evt);
             }
         });
 
@@ -84,16 +95,22 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonAgregarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btVisualizarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonAgregarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btVisualizarPDF1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 67, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonCerrarSesion)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,13 +119,15 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addComponent(botonAgregarDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btVisualizarPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(18, 18, 18)
+                .addComponent(btVisualizarPDF1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(botonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -130,10 +149,15 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
         ControladorInterfazAdmin2.cerrarIa2AbrirGestDocs();
     }//GEN-LAST:event_botonAgregarDocumentoActionPerformed
 
-    private void btVisualizarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarPDFActionPerformed
+    private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         // TODO add your handling code here:
-        ControladorInterfazAdmin2.cerrarIa2AbrirVisualPDF();
-    }//GEN-LAST:event_btVisualizarPDFActionPerformed
+        ControladorInterfazAdmin2.cerrarSesion();
+    }//GEN-LAST:event_botonCerrarSesionActionPerformed
+
+    private void btVisualizarPDF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVisualizarPDF1ActionPerformed
+        // TODO add your handling code here:
+        ControladorVisualizarPDF.iniciarVisualPDF();
+    }//GEN-LAST:event_btVisualizarPDF1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,7 +197,8 @@ public class InterfazAdmin2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregarDocumento;
-    private javax.swing.JButton btVisualizarPDF;
+    private javax.swing.JButton botonCerrarSesion;
+    private javax.swing.JButton btVisualizarPDF1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

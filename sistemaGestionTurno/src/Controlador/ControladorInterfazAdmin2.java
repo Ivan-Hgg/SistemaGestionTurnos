@@ -34,5 +34,9 @@ public class ControladorInterfazAdmin2 {
         ia2.dispose();
         ControladorVisualizarPDF.iniciarVisualPDF();
     }
+    public static void cerrarSesion(){
+        ia2.dispose();
+    ControladorInterfaz1.iniciarVentanaI1();
+    }
     
 }
