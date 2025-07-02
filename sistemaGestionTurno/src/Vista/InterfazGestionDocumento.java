@@ -47,7 +47,7 @@ public class InterfazGestionDocumento extends javax.swing.JFrame {
         jLabel1.setText("Gestione los documentos de la base de datos:");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel2.setText("Nombre del documento");
+        jLabel2.setText("Nombre de la Gestion");
 
         TFNombreDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

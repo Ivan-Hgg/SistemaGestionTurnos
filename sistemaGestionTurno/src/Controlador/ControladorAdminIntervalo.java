@@ -332,31 +332,6 @@ public class ControladorAdminIntervalo {
                 "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
-
-    //aca lo hice con seleccionar con el mouse
-    /*
-    public static void botonEliminar() {
-    try {
-        int filaSeleccionada = v.getjTable1().getSelectedRow();
-        if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(v, "Debe seleccionar un intervalo para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        int idIntervalo = (int) v.getjTable1().getValueAt(filaSeleccionada, 0); // Columna 0 = ID
-
-        int confirmacion = JOptionPane.showConfirmDialog(v, "¿Está seguro que desea eliminar el intervalo seleccionado?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION);
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            bd.eliminarIntervalo(idIntervalo);
-            JOptionPane.showMessageDialog(v, "Intervalo eliminado con éxito.");
-            llenarJTableIntervalos(); // refrescar tabla
-        }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(v, "Error al eliminar intervalo:\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-          }
-    }
-    */
     
     public static void botonModificar() {
     try {

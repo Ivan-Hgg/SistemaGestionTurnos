@@ -168,9 +168,6 @@
           <Dimension value="[1065, 1024]"/>
         </Property>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="labelLogo"/>
-      </AccessibilityProperties>
     </Component>
   </SubComponents>
 </Form>

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 
 import Modelo.BD;
@@ -296,11 +293,7 @@ public static LocalDateTime generarProximoHorarioDisponible(LocalDate fecha, int
     private static String generarCodigoUnico() {
         return java.util.UUID.randomUUID().toString().substring(0, 8);
     
-    
+ 
     }
-    
-    
-    
-    
     
 }
